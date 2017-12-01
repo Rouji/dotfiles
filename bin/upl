@@ -1,0 +1,15 @@
+#!/bin/bash
+HOST='https://x0.at/'
+RESP=$(curl -X POST \
+    --silent \
+    -F "file=@$@" \
+    $HOST)
+
+RESP=$(echo $RESP | tr -d '\n' | tr -d '\r')
+
+echo $RESP
+
+echo -n "$RESP" | xclip -selection clipboard
+echo -n "$RESP" | xclip -selection primary
+
+notify-send 'upload' "$RESP"

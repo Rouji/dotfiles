@@ -1,0 +1,107 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+"set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+"git integration
+Plugin 'tpope/vim-fugitive'
+"git status column
+Plugin 'airblade/vim-gitgutter'
+
+"status bar
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" ycm config
+"let g:ycm_always_populate_location_list=1
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+"airline config
+set ttimeoutlen=50
+set laststatus=2
+"let g:airline_theme = 'powerlineish'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled=1
+
+"display trailing whitespace
+set list          " Display unprintable characters f12 - switches
+set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+
+"set tabs to 4 spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+"case insensitive search
+set ignorecase
+set smartcase
+set hlsearch
+nnoremap <silent> <leader>, :noh<cr> " Stop highlight after searching
+set incsearch
+set showmatch
+
+"highlight current line
+set cursorline
+
+"search into subfolders
+set path+=**
+
+"show all matches at once
+set wildmenu
+
+"Start scrolling when we're 8 lines away from margins
+set scrolloff=8
+
+"open new splits to the right and below
+set splitright
+
+"set 80 column indicator
+set colorcolumn=81,101
+
+"set colour scheme
+set t_Co=256
+set background=dark
+colorscheme gruvbox
+
+"add relative line numbering
+set relativenumber
+
+"enable mouse stuff
+set mouse=a
+
+"split navigation with ctrl+{h,j,k,l}
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"make ; do the same as :
+nnoremap ; :
+
+"close buffer without closing window with ctrl+c
+nnoremap <C-c> :bp\|bd #<CR>

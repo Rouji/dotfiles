@@ -1,0 +1,5 @@
+#!/bin/bash
+SOURCE_DEVICE=hw:PCH
+DEST_DEVICE=default
+arecord -f S32_LE -r44100 -c2 -F0 --period-size=512 -B0 --buffer-size=1024 \
+    -D ${SOURCE_DEVICE} | aplay -D ${DEST_DEVICE}

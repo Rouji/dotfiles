@@ -1,0 +1,56 @@
+pcm.micladspa
+{
+    type ladspa
+    slave.pcm "default";
+    path "/usr/lib64/ladspa";
+    plugins 
+    [
+        {
+            label gate
+            input
+            {
+                controls [ 400 4000 -40 30 1500 1000 -90 0]
+            }
+        }
+        {
+            label lpf
+            input 
+            {
+                controls [ 200000 ]
+            }
+        }
+        {
+            label hpf
+            input 
+            {
+                controls [ 60 ]
+            }
+        }
+        {
+            label dysonCompress
+            input
+            {
+                #peak limit, release time, fast ratio, ratio
+                controls [ 0 1 0.5 0.99 ]
+            }
+        }
+        {
+            label fastLookaheadLimiter
+            input 
+            {
+                #InputGain(Db) -20 -> +10 ; Limit (db) -20 -> 0 ; Release time (s) 0.01 -> 2
+                controls [ 10 0 0.8  ]
+            }
+        }
+    ]
+}
+
+pcm.micfilter {
+    type plug
+    slave.pcm "micladspa";
+    hint
+    {
+        show on
+        description "for prettying up mic input"
+    }
+}

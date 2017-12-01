@@ -1,0 +1,3 @@
+#!/bin/sh
+PREFIX=~/.wine_battlenet
+WINEPREFIX=$PREFIX WINEDEBUG=-all WINEPREFIX=~/.wine_battlenet wine $PREFIX/drive_c/Program\ Files\ \(x86\)/Blizzard\ App/Battle.net.exe
