@@ -44,6 +44,7 @@ colors
 #PROMPT="%B%F{green}%n@%m%f%b:%B%F{blue}%~%f%b> "
 PROMPT="%B%F{green}%B%F{blue}%~%f%b> "
 
+
 #display cpu stats for commands taking longer than 5sec
 REPORTTIME=5
 
@@ -67,6 +68,7 @@ alias lll='ls -alhF'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
 
 #zypper alias
 alias zi='sudo zypper in'
@@ -97,3 +99,5 @@ alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #bindkey '^K' autosuggest-accept
 
 test -f /opt/torch/install/bin/torch-activate && . /opt/torch/install/bin/torch-activate
+
+source ~/.zsh/powerline-prompt.zsh
