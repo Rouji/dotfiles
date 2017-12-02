@@ -105,3 +105,6 @@ nnoremap ; :
 
 "close buffer without closing window with ctrl+c
 nnoremap <C-c> :bp\|bd #<CR>
+
+"enable powerline symbols
+let g:airline_powerline_fonts = 1

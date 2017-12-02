@@ -7,7 +7,7 @@ URxvt.matcher.button: 0
 
 URxvt.termName:         rxvt-unicode
 
-URxvt.font:             xft:xos4 Terminus:pixelsize=8
+URxvt.font:             xft:xos4 Terminess Powerline:pixelsize=8
 URxvt.allow_bold:       false
 
 ! these dont seem to be doing anything for japanese font rendering?
