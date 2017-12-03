@@ -16,7 +16,13 @@ zstyle ':vcs_info:*'    formats "%m%u%c%F{237}%K{237}%F{white} %r [%b] %f%%b%
 #zstyle ':vcs_info:*'    nvcsformats   "%f[%n@%m %1~]$ " ""
 zstyle ':vcs_info:*'    actionformats "%F{93}%K{93}%F{white} %m%u%c %F{red}%K{red}%F{white} %a %F{27}%K{27}%F{white} %r [%b] %f%%b%k"
 
-HOSTPROMPT='%K{237}%F{white} %m %F{237}'
-DIRPROMPT='%K{235}%F{white} %~ %F{235}'
-PROMPT='$HOSTPROMPT$DIRPROMPT%k %f%b'
+if [[ $UID == 0 || $EUID == 0 ]]; then
+    HOSTPROMPT='%K{red}%F{white} %m %F{red}'
+    DIRPROMPT='%K{235}%F{white} %~ %F{235}'
+    PROMPT='$HOSTPROMPT$DIRPROMPT%k %f%b'
+else
+    HOSTPROMPT='%K{237}%F{white} %m %F{237}'
+    DIRPROMPT='%K{235}%F{white} %~ %F{235}'
+    PROMPT='$HOSTPROMPT$DIRPROMPT%k %f%b'
+fi
 RPROMPT='${vcs_info_msg_0_}'
