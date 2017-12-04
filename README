@@ -1,0 +1,10 @@
+alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+INIT
+git init --bare $HOME/.dotfiles
+dot config --local status.showUntrackedFiles no
+
+CLONE
+git clone --bare <REPO> ~/.dotfiles
+dot config --local status.showUntrackedFiles no
+dot reset --hard HEAD
