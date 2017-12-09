@@ -106,5 +106,8 @@ nnoremap ; :
 "close buffer without closing window with ctrl+c
 nnoremap <C-c> :bp\|bd #<CR>
 
+"ctrl-R in visual selection to replace in whole file
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
+
 "enable powerline symbols
 let g:airline_powerline_fonts = 1
