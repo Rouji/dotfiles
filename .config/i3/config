@@ -51,8 +51,13 @@ bindsym $mod+q exec --no-startup-id qb
 # start/stop compton
 bindsym $mod+c exec --no-startup-id "killall compton || compton --config ~/.config/compton.conf"
 
-bindsym Print exec xfce4-screenshooter
-bindsym $mod+Print exec screenshotupload
+bindsym --release Print exec xfce4-screenshooter
+bindsym --release $mod+Print exec screenshotupload
+
+# pause/resume process of active window
+bindsym --release $mod+Shift+p exec "kill -STOP $(xdotool getactivewindow getwindowpid)"
+bindsym --release $mod+p exec "kill -CONT $(xdotool getactivewindow getwindowpid)"
+
 
 set $left h
 set $up k
