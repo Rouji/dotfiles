@@ -57,7 +57,8 @@ bindsym --release $mod+Print exec screenshotupload
 # pause/resume process of active window
 bindsym $mod+Shift+p exec "kill -STOP $(xdotool getactivewindow getwindowpid)"
 bindsym $mod+p exec "kill -CONT $(xdotool getactivewindow getwindowpid)"
-
+# KILL process of active window
+bindsym $mod+Shift+z exec "kill -KILL $(xdotool getactivewindow getwindowpid)"
 
 set $left h
 set $up k
