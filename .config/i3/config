@@ -55,8 +55,8 @@ bindsym --release Print exec xfce4-screenshooter
 bindsym --release $mod+Print exec screenshotupload
 
 # pause/resume process of active window
-bindsym --release $mod+Shift+p exec "kill -STOP $(xdotool getactivewindow getwindowpid)"
-bindsym --release $mod+p exec "kill -CONT $(xdotool getactivewindow getwindowpid)"
+bindsym $mod+Shift+p exec "kill -STOP $(xdotool getactivewindow getwindowpid)"
+bindsym $mod+p exec "kill -CONT $(xdotool getactivewindow getwindowpid)"
 
 
 set $left h
