@@ -85,11 +85,17 @@ alias gp='git push'
 #googler alias
 alias g='googler -n 5 -l ja'
 
-#vim alias
-alias vim='nvim'
-alias vi='nvim'
+#(n)vim alias
+export EDITOR=vi
+if type "vim" >/dev/null; then
+    alias vi='vim'
+    export EDITOR=vim
+fi
+if type "nvim" >/dev/null; then
+    alias vim='nvim'
+    export EDITOR=nvim
+fi
 
-export EDITOR=vim
 
 #dotfiles git repo stuff
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
