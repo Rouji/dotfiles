@@ -1,20 +1,32 @@
 #!/usr/bin/env python3
+# coding=utf-8
+
 import sys
 import re
 import subprocess
 import os.path
+from xdg.BaseDirectory import xdg_config_dirs
 
 urls = sys.argv[1:]
-conf = []
-with open(os.path.expanduser("~/.config/openurl.conf")) as f:
-    for line in f:
-        conf.append(line.split())
+
+def config_line():
+    for cdir in xdg_config_dirs:
+        cfile = os.path.join(cdir, 'openurl.conf')
+        if not os.path.isfile(cfile):
+            continue
+        with open(cfile) as f:
+            for line in f:
+                yield line.split()
 
 for u in urls:
-    for c in conf:
+    opened = False
+    for c in config_line():
         reg = c[0]
         args = c[1:]
         if re.search(reg, u) is not None:
             subprocess.Popen(['notify-send', 'opening with ' + args[0], u])
             subprocess.Popen([a.replace('$url$', u) for a in args])
+            opened = True
             break
+    if not opened:
+        subprocess.Popen(['notify-send', "URL didn't match ANY regex, was not opened", u])
