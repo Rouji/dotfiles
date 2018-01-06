@@ -111,3 +111,6 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 
 "enable powerline symbols
 let g:airline_powerline_fonts = 1
+
+"f9 to run stuff
+autocmd FileType python nnoremap <F9> :!%:p<CR>
