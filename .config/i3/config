@@ -229,6 +229,8 @@ bindsym $mod+Shift+s exec i3-input -F 'rename workspace to "%s"' -P 'New name fo
 #steam crap
 for_window [title=" - Chat$"] move to workspace steam_chat
 for_window [class="Steam"] floating enable
+#wine desktop
+for_window [class="Wine Desktop"] floating enable
 
 #disable titlebars
 for_window [class="^.*"] pixel 2
