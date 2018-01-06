@@ -22,7 +22,7 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
     PROMPT='$HOSTPROMPT$DIRPROMPT%k %f%b'
 else
     HOSTPROMPT='%K{237}%F{white} %m %F{237}'
-    DIRPROMPT='%K{235}%F{white} %~ %F{235}'
+    DIRPROMPT='%K{235}%F{white} %(4~|.../%3~|%~) %F{235}'
     PROMPT='$HOSTPROMPT$DIRPROMPT%k %f%b'
 fi
 RPROMPT='${vcs_info_msg_0_}'
