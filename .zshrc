@@ -1,4 +1,13 @@
-# The following lines were added by compinstall
+# start tmux
+if command -v tmux>/dev/null; then
+    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
+        if tmux ls | grep -qv attached; then
+            exec tmux attach
+        else
+            exec tmux new
+        fi
+    fi
+fi
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' list-colors ''
@@ -96,6 +105,8 @@ if type "nvim" >/dev/null; then
     export EDITOR=nvim
 fi
 
+#LANG=C shortcut
+alias lc='LANG=C'
 
 #dotfiles git repo stuff
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -107,3 +118,9 @@ alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 test -f /opt/torch/install/bin/torch-activate && . /opt/torch/install/bin/torch-activate
 
 source ~/.zsh/powerline-prompt.zsh
+
+
+# select tmux session
+if command -v tmux>/dev/null && [ -v $TMUX ] && tmux ls; then
+    tmux choose-session
+fi
