@@ -10,8 +10,9 @@
 # Type: QssColor
 c.colors.completion.even.bg = '#111111'
 
-# Text color of the completion widget.
-# Type: QtColor
+# Text color of the completion widget. May be a single color to use for
+# all columns or a list of three colors, one for each column.
+# Type: List of QtColor, or QtColor
 c.colors.completion.fg = 'white'
 
 # Background color of the selected completion item.
@@ -88,11 +89,11 @@ c.colors.tabs.selected.odd.bg = 'grey'
 c.colors.tabs.selected.odd.fg = 'white'
 
 # Background color for webpages if unset (or empty to use the theme's
-# color)
+# color).
 # Type: QtColor
 c.colors.webpage.bg = 'white'
 
-# How many commands to save in the command history. 0: no history / -1:
+# Number of commands to save in the command history. 0: no history / -1:
 # unlimited
 # Type: Int
 c.completion.cmd_history_max_items = 10000
@@ -105,21 +106,36 @@ c.content.headers.accept_language = 'ja-JP,ja,en-US,en,de-DE,de'
 # Type: String
 c.content.headers.user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0'
 
-# Enables or disables WebGL.
+# Enable WebGL.
 # Type: Bool
 c.content.webgl = False
 
-# Whether load requests should be monitored for cross-site scripting
-# attempts. Suspicious scripts will be blocked and reported in the
-# inspector's JavaScript console. Enabling this feature might have an
-# impact on performance.
+# Monitor load requests for cross-site scripting attempts. Suspicious
+# scripts will be blocked and reported in the inspector's JavaScript
+# console. Enabling this feature might have an impact on performance.
 # Type: Bool
 c.content.xss_auditing = False
 
-# The directory to save downloads to. If unset, a sensible os-specific
+# Directory to save downloads to. If unset, a sensible OS-specific
 # default is used.
 # Type: Directory
 c.downloads.location.directory = '~/Downloads'
+
+# Font used in the completion categories.
+# Type: Font
+c.fonts.completion.category = 'bold 8pt monospace'
+
+# Font used in the completion widget.
+# Type: Font
+c.fonts.completion.entry = '8pt monospace'
+
+# Font used for the debugging console.
+# Type: QtFont
+c.fonts.debug_console = '8pt monospace'
+
+# Font used for the downloadbar.
+# Type: Font
+c.fonts.downloads = '8pt monospace'
 
 # Font used for the hints.
 # Type: Font
@@ -129,7 +145,36 @@ c.fonts.hints = '8pt monospace'
 # Type: Font
 c.fonts.keyhint = '8pt monospace'
 
-# Chars used for hint strings.
+# Font used for error messages.
+# Type: Font
+c.fonts.messages.error = '8pt monospace'
+
+# Font used for info messages.
+# Type: Font
+c.fonts.messages.info = '8pt monospace'
+
+# Font used for warning messages.
+# Type: Font
+c.fonts.messages.warning = '8pt monospace'
+
+# Default monospace fonts. Whenever "monospace" is used in a font
+# setting, it's replaced with the fonts listed here.
+# Type: Font
+c.fonts.monospace = '"xos4 Terminus", Terminus, Monospace, "DejaVu Sans Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation Mono", monospace, Fixed, Consolas, Terminal'
+
+# Font used for prompts.
+# Type: Font
+c.fonts.prompts = '8pt monospace'
+
+# Font used in the statusbar.
+# Type: Font
+c.fonts.statusbar = '8pt monospace'
+
+# Font used in the tab bar.
+# Type: QtFont
+c.fonts.tabs = '8pt monospace'
+
+# Characters used for hint strings.
 # Type: UniqueCharString
 c.hints.chars = 'qwerasdf'
 
@@ -137,7 +182,7 @@ c.hints.chars = 'qwerasdf'
 # Type: Bool
 c.statusbar.hide = False
 
-# Padding for the statusbar.
+# Padding (in pixels) for the statusbar.
 # Type: Padding
 c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
 
@@ -145,7 +190,7 @@ c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
 # Type: Bool
 c.tabs.background = True
 
-# On which mouse button to close tabs.
+# Mouse button with which to close tabs.
 # Type: String
 # Valid values:
 #   - right: Close tabs on right-click.
@@ -153,8 +198,8 @@ c.tabs.background = True
 #   - none: Don't close tabs using the mouse.
 c.tabs.close_mouse_button = 'middle'
 
-# Scaling for favicons in the tab bar. The tab size is unchanged, so big
-# favicons also require extra `tabs.padding`.
+# Scaling factor for favicons in the tab bar. The tab size is unchanged,
+# so big favicons also require extra `tabs.padding`.
 # Type: Float
 c.tabs.favicons.scale = 1.0
 
@@ -162,11 +207,11 @@ c.tabs.favicons.scale = 1.0
 # Type: Bool
 c.tabs.favicons.show = True
 
-# Padding for tab indicators
+# Padding (in pixels) for tab indicators.
 # Type: Padding
-c.tabs.indicator_padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
 
-# Behavior when the last tab is closed.
+# How to behave when the last tab is closed.
 # Type: String
 # Valid values:
 #   - ignore: Don't do anything.
@@ -180,7 +225,7 @@ c.tabs.last_close = 'ignore'
 # Type: Bool
 c.tabs.mousewheel_switching = True
 
-# How new tabs opened from another tab are positioned.
+# Position of new tabs opened from another tab.
 # Type: NewTabPosition
 # Valid values:
 #   - prev: Before the current tab.
@@ -189,7 +234,7 @@ c.tabs.mousewheel_switching = True
 #   - last: At the end.
 c.tabs.new_position.related = 'next'
 
-# How new tabs which aren't opened from another tab are positioned.
+# Position of new tabs which aren't opened from another tab.
 # Type: NewTabPosition
 # Valid values:
 #   - prev: Before the current tab.
@@ -198,11 +243,11 @@ c.tabs.new_position.related = 'next'
 #   - last: At the end.
 c.tabs.new_position.unrelated = 'last'
 
-# Padding around text for tabs
+# Padding (in pixels) around text for tabs.
 # Type: Padding
 c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
 
-# The position of the tab bar.
+# Position of the tab bar.
 # Type: Position
 # Valid values:
 #   - top
@@ -228,8 +273,8 @@ c.tabs.select_on_remove = 'next'
 #   - switching: Show the tab bar when switching tabs.
 c.tabs.show = 'multiple'
 
-# Time to show the tab bar before hiding it when tabs.show is set to
-# 'switching'.
+# Duration (in milliseconds) to show the tab bar before hiding it when
+# tabs.show is set to 'switching'.
 # Type: Int
 c.tabs.show_switching_delay = 800
 
@@ -245,76 +290,15 @@ c.tabs.tabs_are_windows = False
 #   - center
 c.tabs.title.alignment = 'left'
 
-# The format to use for the tab title. The following placeholders are
-# defined:  * `{perc}`: The percentage as a string like `[10%]`. *
-# `{perc_raw}`: The raw percentage, e.g. `10` * `{title}`: The title of
-# the current web page * `{title_sep}`: The string ` - ` if a title is
-# set, empty otherwise. * `{index}`: The index of this tab. * `{id}`:
-# The internal tab ID of this tab. * `{scroll_pos}`: The page scroll
-# position. * `{host}`: The host of the current web page. * `{backend}`:
-# Either ''webkit'' or ''webengine'' * `{private}` : Indicates when
-# private mode is enabled.
+# Format to use for the tab title. The following placeholders are
+# defined:  * `{perc}`: Percentage as a string like `[10%]`. *
+# `{perc_raw}`: Raw percentage, e.g. `10`. * `{title}`: Title of the
+# current web page. * `{title_sep}`: The string ` - ` if a title is set,
+# empty otherwise. * `{index}`: Index of this tab. * `{id}`: Internal
+# tab ID of this tab. * `{scroll_pos}`: Page scroll position. *
+# `{host}`: Host of the current web page. * `{backend}`: Either
+# ''webkit'' or ''webengine'' * `{private}`: Indicates when private mode
+# is enabled. * `{current_url}`: URL of the current web page. *
+# `{protocol}`: Protocol (http/https/...) of the current web page.
 # Type: FormatString
 c.tabs.title.format = '{perc}{title}'
-
-# The width of the tab bar if it's vertical, in px or as percentage of
-# the window.
-# Type: PercOrInt
-c.tabs.width.bar = '5%'
-
-# Width of the progress indicator (0 to disable).
-# Type: Int
-c.tabs.width.indicator = 0
-
-# Whether to wrap when changing tabs.
-# Type: Bool
-c.tabs.wrap = True
-
-# The page to open if :open -t/-b/-w is used without URL. Use
-# `about:blank` for a blank page.
-# Type: FuzzyUrl
-c.url.default_page = 'about:blank'
-
-# The URL segments where `:navigate increment/decrement` will search for
-# a number.
-# Type: FlagList
-# Valid values:
-#   - host
-#   - path
-#   - query
-#   - anchor
-c.url.incdec_segments = ['path', 'query']
-
-# Definitions of search engines which can be used via the address bar.
-# Maps a searchengine name (such as `DEFAULT`, or `ddg`) to a URL with a
-# `{}` placeholder. The placeholder will be replaced by the search term,
-# use `{{` and `}}` for literal `{`/`}` signs. The searchengine named
-# `DEFAULT` is used when `url.auto_search` is turned on and something
-# else than a URL was entered to be opened. Other search engines can be
-# used by prepending the search engine name to the search term, e.g.
-# `:open google qutebrowser`.
-# Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'g': 'https://www.google.com/?q={}', 'w': 'https://en.wikipedia.org/?search={}', 'wj': 'https://ja.wikipedia.org/?search={}', 'wd': 'https://de.wikipedia.org/?search={}', 'wt': 'https://en.wiktionary.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'tbp': 'http://thepiratebay.org/search/{}', 'lib': 'http://gen.lib.rus.ec/search.php?req={}', 'wh': 'https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={}'}
-
-# The page(s) to open at the start.
-# Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = 'about:blank'
-
-# The URL parameters to strip with `:yank url`.
-# Type: List of String
-c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
-
-# The format to use for the window title. The following placeholders are
-# defined:  * `{perc}`: The percentage as a string like `[10%]`. *
-# `{perc_raw}`: The raw percentage, e.g. `10` * `{title}`: The title of
-# the current web page * `{title_sep}`: The string ` - ` if a title is
-# set, empty otherwise. * `{id}`: The internal window ID of this window.
-# * `{scroll_pos}`: The page scroll position. * `{host}`: The host of
-# the current web page. * `{backend}`: Either ''webkit'' or
-# ''webengine'' * `{private}` : Indicates when private mode is enabled.
-# Type: FormatString
-c.window.title_format = '{perc}{title}'
-
-# Bindings for normal mode
-config.bind(';e', 'spawn umpv {url}')
-config.bind('e', 'hint --rapid links spawn umpv {hint-url}')
