@@ -6,6 +6,11 @@
 # Uncomment this to still load settings configured via autoconfig.yml
 # config.load_autoconfig()
 
+# Aliases for commands. The keys of the given dictionary are the
+# aliases, while the values are the commands they map to.
+# Type: Dict
+c.aliases = {'w': 'session-save', 'q': 'quit', 'wq': 'quit --save'}
+
 # Background color of the completion widget for even rows.
 # Type: QssColor
 c.colors.completion.even.bg = '#111111'
@@ -302,3 +307,17 @@ c.tabs.title.alignment = 'left'
 # `{protocol}`: Protocol (http/https/...) of the current web page.
 # Type: FormatString
 c.tabs.title.format = '{perc}{title}'
+
+# Format to use for the tab title for pinned tabs. The same placeholders
+# like for `tabs.title.format` are defined.
+# Type: FormatString
+c.tabs.title.format_pinned = '{index}'
+
+# Width (in pixels or as percentage of the window) of the tab bar if
+# it's vertical.
+# Type: PercOrInt
+c.tabs.width = '5%'
+
+config.bind(';e', 'spawn umpv {url}')
+config.bind('e', 'hint --rapid links spawn umpv {hint-url}')
+
