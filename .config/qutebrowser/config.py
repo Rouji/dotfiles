@@ -318,6 +318,31 @@ c.tabs.title.format_pinned = '{index}'
 # Type: PercOrInt
 c.tabs.width = '5%'
 
+# Search engines which can be used via the address bar. Maps a search
+# engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
+# placeholder. The placeholder will be replaced by the search term, use
+# `{{` and `}}` for literal `{`/`}` signs. The search engine named
+# `DEFAULT` is used when `url.auto_search` is turned on and something
+# else than a URL was entered to be opened. Other search engines can be
+# used by prepending the search engine name to the search term, e.g.
+# `:open google qutebrowser`.
+# Type: Dict
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 
+        'g': 'https://www.google.com/search?q={}', 
+        'w': 'https://en.wikipedia.org/?search={}', 
+        'wj': 'https://ja.wikipedia.org/?search={}', 
+        'wd': 'https://de.wikipedia.org/?search={}', 
+        'wt': 'https://en.wiktionary.org/?search={}', 
+        'yt': 'https://www.youtube.com/results?search_query={}', 
+        'tbp': 'http://thepiratebay.org/search/{}', 
+        'lib': 'http://gen.lib.rus.ec/search.php?req={}', 
+        'am': 'https://www.amazon.de/s/url=search-alias%3Daps&field-keywords={}', 
+        'wh': 'https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={}'}
+
+# Page(s) to open at the start.
+# Type: List of FuzzyUrl, or FuzzyUrl
+c.url.start_pages = 'https://start.duckduckgo.com'
+
+# Bindings for normal mode
 config.bind(';e', 'spawn umpv {url}')
 config.bind('e', 'hint --rapid links spawn umpv {hint-url}')
-
