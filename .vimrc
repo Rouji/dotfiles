@@ -112,6 +112,9 @@ nnoremap <C-c> :bp\|bd #<CR>
 "ctrl-R in visual selection to replace in whole file
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 "enable powerline symbols
 let g:airline_powerline_fonts = 1
 
