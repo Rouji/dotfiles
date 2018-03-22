@@ -1,0 +1,2 @@
+#!/bin/bash
+vim -c ":e ++enc=shift_jis" "$@"
