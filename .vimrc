@@ -117,3 +117,9 @@ let g:airline_powerline_fonts = 1
 
 "f9 to run stuff
 autocmd FileType python nnoremap <F9> :!%:p<CR>
+
+"f10 to make
+map <F10> :w <Bar> if filereadable('Makefile') <Bar> silent make! &> /dev/null <Bar> endif <CR>
+
+" automatic spellcheck on text files
+autocmd BufRead,BufNewFile *.md,*.txt,*.tex setlocal spell
