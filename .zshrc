@@ -111,16 +111,4 @@ alias lc='LANG=C'
 #dotfiles git repo stuff
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# autosuggest stuff
-#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-#bindkey '^K' autosuggest-accept
-
-test -f /opt/torch/install/bin/torch-activate && . /opt/torch/install/bin/torch-activate
-
 source ~/.zsh/powerline-prompt.zsh
-
-
-# select tmux session
-if command -v tmux>/dev/null && [ -v $TMUX ] && tmux ls; then
-    tmux choose-session
-fi
