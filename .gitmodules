@@ -1,0 +1,3 @@
+[submodule ".zsh/git-hub"]
+	path = .zsh/git-hub
+	url = https://github.com/ingydotnet/git-hub.git
