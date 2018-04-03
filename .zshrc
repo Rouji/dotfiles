@@ -112,4 +112,3 @@ alias lc='LANG=C'
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 source ~/.zsh/powerline-prompt.zsh
-source ~/.zsh/git-hub/.rc
