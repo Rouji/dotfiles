@@ -338,6 +338,7 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}',
         'tbp': 'http://thepiratebay.org/search/{}', 
         'lib': 'http://gen.lib.rus.ec/search.php?req={}', 
         'am': 'https://www.amazon.de/s/url=search-alias%3Daps&field-keywords={}', 
+        'gh': 'https://geizhals.at/?fs={}&in=', 
         'wh': 'https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={}'}
 
 # Page(s) to open at the start.
