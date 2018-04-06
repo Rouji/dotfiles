@@ -231,6 +231,8 @@ for_window [title=" - Chat$"] move to workspace steam_chat
 for_window [class="Steam"] floating enable
 #wine desktop
 for_window [class="Wine Desktop"] floating enable
+#image viewer
+for_window [class="^feh"] floating enable
 
 #disable titlebars
 for_window [class="^.*"] pixel 2
