@@ -144,6 +144,8 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym $mod+period exec xbacklight -inc 20 # increase screen brightness
+bindsym $mod+comma exec xbacklight -dec 20 # decrease screen brightness
 
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
@@ -248,15 +250,6 @@ bindsym $mod+x border pixel 2
 
 # set up displays
 exec --no-startup-id sh ~/.screenlayout/default.sh
-
-# start gnome network manager 
-exec --no-startup-id nm-applet
-
-# start clipboard manager
-exec --no-startup-id glipper
-
-# start thunderbird
-exec --no-startup-id thunderbird
 
 # re-set wallpaper
 exec_always --no-startup-id nitrogen --restore
