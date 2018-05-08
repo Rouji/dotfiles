@@ -22,6 +22,12 @@ Plugin 'vim-airline/vim-airline-themes'
 "w3m browser
 Plugin 'yuratomo/w3m.vim'
 
+"code completion
+Plugin 'Valloric/YouCompleteMe'
+
+"python stuff
+Plugin 'davidhalter/jedi-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -97,6 +103,10 @@ set relativenumber
 "enable mouse stuff
 set mouse=a
 
+"enable folding
+set foldmethod=indent
+set foldlevel=99
+
 "split navigation with ctrl+{h,j,k,l}
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -105,6 +115,9 @@ nnoremap <C-H> <C-W><C-H>
 
 "make ; do the same as :
 nnoremap ; :
+
+"fold using space
+nnoremap <space> za
 
 "close buffer without closing window with ctrl+c
 nnoremap <C-c> :bp\|bd #<CR>
