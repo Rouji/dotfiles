@@ -90,9 +90,10 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
-
-#googler alias
-alias g='googler -n 5 -l ja'
+alias gr='git rm'
+alias gg='git grep'
+alias gd='git difftool -y'
+alias gmv='git mv'
 
 #(n)vim alias
 export EDITOR=vi
