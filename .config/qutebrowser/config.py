@@ -210,7 +210,7 @@ c.tabs.favicons.scale = 1.0
 
 # Show favicons in the tab bar.
 # Type: Bool
-c.tabs.favicons.show = True
+c.tabs.favicons.show = 'always'
 
 # Padding (in pixels) for tab indicators.
 # Type: Padding
