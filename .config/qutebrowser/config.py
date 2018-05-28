@@ -337,10 +337,11 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}',
         'wt': 'https://en.wiktionary.org/?search={}', 
         'leo': 'https://dict.leo.org/englisch-deutsch/{}', 
         'yt': 'https://www.youtube.com/results?search_query={}', 
-        'tbp': 'http://thepiratebay.org/search/{}', 
+        'tpb': 'http://thepiratebay.org/search/{}', 
         'lib': 'http://gen.lib.rus.ec/search.php?req={}', 
         'am': 'https://www.amazon.de/s/url=search-alias%3Daps&field-keywords={}', 
         'gh': 'https://geizhals.at/?fs={}&in=', 
+        'git': 'https://github.com/search?utf8=%E2%9C%93&q={}&type=', 
         'wh': 'https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={}'}
 
 # Page(s) to open at the start.

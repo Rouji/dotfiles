@@ -229,10 +229,11 @@ bar {
 bindsym $mod+Shift+s exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
 
 #steam crap
-for_window [title=" - Chat$"] move to workspace steam_chat
-for_window [class="Steam"] floating enable
+for_window [title=" - Chat$"] move to workspace useless_crap
 #wine desktop
 for_window [class="Wine Desktop"] floating enable
+#wine errors
+for_window [title="^Program Error$"] move to workspace useless_crap
 #image viewer
 for_window [class="^feh"] floating enable
 
