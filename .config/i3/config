@@ -41,9 +41,9 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 #bindsym $mod+d exec dmenu_run -i -l 20 -fn "xos4 terminus-8"
-bindsym $mod+d exec rofi -show run -font "xos4 terminus 10" -width 30
+bindsym $mod+d exec rofi -show run -font "xos4 terminus 8" -width 30
 # start windows switcher
-bindsym $mod+s exec rofi -show window -font "xos4 terminus 10" -width 30
+bindsym $mod+s exec rofi -show window -font "xos4 terminus 8" -width 30
 
 # open new browser window
 bindsym $mod+q exec --no-startup-id qb
