@@ -249,8 +249,5 @@ new_float pixel 2
 bindsym $mod+z border none
 bindsym $mod+x border pixel 2
 
-# set up displays
-exec --no-startup-id sh ~/.screenlayout/default.sh
-
 # re-set wallpaper
 exec_always --no-startup-id nitrogen --restore
