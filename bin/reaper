@@ -1,12 +1,4 @@
 #!/bin/sh
-#start jackd if not running
-pgrep jackd || jackd -R -p1024 -d alsa -dhw:USB -M -H -n2 -p256 -s -r 44100 &
-sleep 3
-pgrep jackd || jackd -ddummy &
-
-#WINE_BIN=~/wine_gcc6/wine64
 WINE_BIN=wine
-PREFIX=~/.wine_reaper64
+PREFIX=~/.wine_reaper
 WINEPREFIX=$PREFIX WINEDEBUG=-all $WINE_BIN $PREFIX/drive_c/Program\ Files/REAPER\ \(x64\)/reaper.exe
-
-killall jackd
