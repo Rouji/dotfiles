@@ -20,6 +20,7 @@ autoload -Uz compinit
 compinit
 setopt completeinword
 
+autoload zmv
 
 autoload select-word-style
 select-word-style shell
@@ -72,6 +73,9 @@ if [[ -x "`whence -p dircolors`" ]]; then
     alias egrep='egrep --color=auto'
 fi
 
+#zmv alias
+alias mmv='noglob zmv -W'
+
 #ls alias
 alias lll='ls -alhF'
 alias ll='ls -alF'
@@ -82,7 +86,7 @@ alias l='ls -CF'
 #zypper alias
 alias zi='sudo zypper in'
 alias zs='zypper se'
-alias zu='sudo zypper dup'
+alias zu='sudo zypper ref && sudo zypper dup'
 alias zr='sudo zypper rm'
 
 #git alias
@@ -94,6 +98,12 @@ alias gr='git rm'
 alias gg='git grep'
 alias gd='git difftool -y'
 alias gmv='git mv'
+
+# copypaste
+alias c='xclip -selection clipboard'
+alias cx='xclip'
+alias p='xclip -selection clipboard -o'
+alias px='xclip -o'
 
 #(n)vim alias
 export EDITOR=vi
