@@ -14,7 +14,7 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' menu select=0
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' #make tab completion case-insensitive
-zstyle :compinstall filename '$HOME/andi/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
