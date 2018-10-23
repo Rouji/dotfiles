@@ -48,6 +48,9 @@ bindsym $mod+s exec rofi -show window -font "xos4 terminus 8" -width 30
 # open new browser window
 bindsym $mod+q exec --no-startup-id qb
 
+# open rofi keepass thingy
+bindsym $mod+Ctrl+k exec keepmenu
+
 # start/stop compton
 bindsym $mod+c exec --no-startup-id "killall compton || compton --config ~/.config/compton.conf"
 
@@ -200,7 +203,7 @@ bindsym $mod+m move workspace to output right
 #                       border background text indicator
 client.focused          #00ff00 #00ff00 #000000 #027af9
 client.unfocused        #000000 #000000 #ffffff #000000
-#client.focused_inactive $col_medium_grey $col_medium_grey $col_font #fffff
+client.focused_inactive #000000 #000000 #ffffff #000000
 #client.urgent           $col_indicate $col_indicate $col_font #ffffff
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -232,22 +235,24 @@ bindsym $mod+Shift+s exec i3-input -F 'rename workspace to "%s"' -P 'New name fo
 for_window [title=" - Chat$"] move to workspace useless_crap
 #wine desktop
 for_window [class="Wine Desktop"] floating enable
+#mpv opened via openurl
+for_window [title="openurl_mpv"] floating enable
 #wine errors
 for_window [title="^Program Error$"] move to workspace useless_crap
 #image viewer
 for_window [class="^feh"] floating enable
 
 #disable titlebars
-for_window [class="^.*"] pixel 2
-new_window pixel 2
-new_float pixel 2
+for_window [class="^.*"] pixel 1
+new_window pixel 1
+new_float pixel 1
 #for_window [class="^.*"] none
 #new_window none
 #new_float none
 
 #hotkeys for showing/hiding borders entirely
 bindsym $mod+z border none
-bindsym $mod+x border pixel 2
+bindsym $mod+x border pixel 1
 
 # re-set wallpaper
 exec_always --no-startup-id nitrogen --restore
