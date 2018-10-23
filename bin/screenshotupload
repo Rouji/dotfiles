@@ -3,4 +3,4 @@ DIR="$HOME/Screenshots"
 DATE=`date +%Y-%m-%d_%I%M%S`
 FILE="$DIR/screenshot_$DATE.png"
 mkdir -p $DIR
-maim -s $FILE && upl $FILE
+maim --hidecursor -s $FILE && upl $FILE
