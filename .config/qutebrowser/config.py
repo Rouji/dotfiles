@@ -109,7 +109,7 @@ c.content.headers.accept_language = 'ja-JP,ja,en-US,en,de-DE,de'
 
 # User agent to send. Unset to send the default.
 # Type: String
-c.content.headers.user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0'
+c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
 
 # Enable WebGL.
 # Type: Bool
@@ -341,7 +341,7 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}',
         'lib': 'http://gen.lib.rus.ec/search.php?req={}', 
         'am': 'https://www.amazon.de/s/url=search-alias%3Daps&field-keywords={}', 
         'gh': 'https://geizhals.at/?fs={}&in=', 
-        'git': 'https://github.com/search?utf8=%E2%9C%93&q={}&type=', 
+        'gith': 'https://github.com/search?utf8=%E2%9C%93&q={}&type=', 
         'wh': 'https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={}'}
 
 # Page(s) to open at the start.
