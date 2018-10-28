@@ -30,7 +30,7 @@ setopt correctall
 
 HISTFILE=~/.zshhist
 HISTSIZE=5000
-SAVEHIST=50000
+SAVEHIST=500000
 setopt appendhistory sharehistory
 
 #cd by typing only dirname, without "cd"
@@ -85,6 +85,7 @@ alias l='ls -CF'
 
 #zypper alias
 alias zi='sudo zypper in'
+alias ziy='sudo zypper in -y'
 alias zs='zypper se'
 alias zu='sudo zypper ref && sudo zypper dup'
 alias zr='sudo zypper rm'
@@ -123,3 +124,7 @@ alias lc='LANG=C'
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 source ~/.zsh/powerline-prompt.zsh
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]='none'
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
