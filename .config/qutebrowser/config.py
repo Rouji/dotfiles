@@ -4,7 +4,7 @@
 #   qute://help/settings.html
 
 # Uncomment this to still load settings configured via autoconfig.yml
-# config.load_autoconfig()
+config.load_autoconfig()
 
 # Aliases for commands. The keys of the given dictionary are the
 # aliases, while the values are the commands they map to.
@@ -120,6 +120,8 @@ c.content.webgl = False
 # console. Enabling this feature might have an impact on performance.
 # Type: Bool
 c.content.xss_auditing = False
+
+c.content.javascript.enabled = False
 
 # Directory to save downloads to. If unset, a sensible OS-specific
 # default is used.
@@ -346,7 +348,7 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}',
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = 'https://start.duckduckgo.com'
+c.url.start_pages = 'https://start.duckduckgo.com/'
 
 # Bindings for normal mode
 config.bind(';e', 'spawn umpv {url}')
