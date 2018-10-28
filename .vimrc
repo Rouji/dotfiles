@@ -19,14 +19,18 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-"w3m browser
-Plugin 'yuratomo/w3m.vim'
+"snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 "code completion
 Plugin 'Valloric/YouCompleteMe'
 
 "python stuff
 Plugin 'davidhalter/jedi-vim'
+
+"autoformat code
+Plugin 'Chiel92/vim-autoformat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,6 +52,11 @@ filetype plugin indent on    " required
 "let g:ycm_always_populate_location_list=1
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
+"snippets bindings
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
 "airline config
 set ttimeoutlen=50
 set laststatus=2
@@ -60,6 +69,10 @@ let g:airline#extensions#branch#enabled=1
 "display trailing whitespace
 set list          " Display unprintable characters f12 - switches
 set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+
+"persistent undo, swap files
+set undofile
+set swapfile
 
 "set tabs to 4 spaces
 set tabstop=4
@@ -106,6 +119,10 @@ set mouse=a
 "enable folding
 set foldmethod=indent
 set foldlevel=99
+
+"file browsing
+let g:netrw_banner=0
+let g:netrw_liststyle=3
 
 "split navigation with ctrl+{h,j,k,l}
 nnoremap <C-J> <C-W><C-J>
