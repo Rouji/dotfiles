@@ -64,7 +64,7 @@ KEYTIMEOUT=10
 #prevent useless 'no matches found' error
 setopt nonomatch
 
-#colors for ls
+#colors for ls/grep
 if [[ -x "`whence -p dircolors`" ]]; then
     eval `dircolors`
     alias ls='ls -F --color=auto'
@@ -72,6 +72,9 @@ if [[ -x "`whence -p dircolors`" ]]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+#grep alias
+alias i='grep -i'
 
 #zmv alias
 alias mmv='noglob zmv -W'
