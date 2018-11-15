@@ -76,6 +76,9 @@ fi
 #grep alias
 alias i='grep -i'
 
+#ps grep alias
+alias psg='ps aux | grep -i'
+
 #zmv alias
 alias mmv='noglob zmv -W'
 
