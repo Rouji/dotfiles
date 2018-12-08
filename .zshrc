@@ -1,6 +1,7 @@
 # start tmux
+tty | grep -qE '/dev/tty[0-9]+'
 if command -v tmux>/dev/null; then
-    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
+    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && [ ! $? ]; then
         if tmux ls | grep -qv attached; then
             exec tmux attach
         else
@@ -128,6 +129,9 @@ alias lc='LANG=C'
 
 #dotfiles git repo stuff
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+alias s='noglob sentences -s'
+alias j='noglob jm'
 
 source ~/.zsh/powerline-prompt.zsh
 
