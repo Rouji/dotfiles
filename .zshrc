@@ -133,6 +133,7 @@ alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias s='noglob sentences -s'
 alias j='noglob jm'
 
+
 source ~/.zsh/powerline-prompt.zsh
 
 typeset -A ZSH_HIGHLIGHT_STYLES
