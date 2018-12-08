@@ -1,12 +1,11 @@
 # start tmux
-tty | grep -qE '/dev/tty[0-9]+'
-if command -v tmux>/dev/null; then
-    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && [ ! $? ]; then
-        if tmux ls | grep -qv attached; then
-            exec tmux attach
-        else
-            exec tmux new
-        fi
+tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$?
+command -v tmux>/dev/null; HAS_TMUX=$?
+if [[ $HAS_TMUX -eq 0 ]] && [[ $IS_TTY -ne 0 ]] && [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
+    if tmux ls | grep -qv attached; then
+        exec tmux attach
+    else
+        exec tmux new
     fi
 fi
 
