@@ -1,3 +1,0 @@
-#!/bin/sh
-PREFIX=~/.wine_steam32
-WINEPREFIX=$PREFIX WINEDEBUG=-all wine $PREFIX/drive_c/Program\ Files/Steam/Steam.exe -no-cef-sandbox

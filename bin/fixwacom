@@ -1,2 +1,0 @@
-#!/bin/bash
-xsetwacom set 'Wacom Bamboo Pen Pen stylus' MapToOutput "1920x1080+0+0"

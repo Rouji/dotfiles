@@ -1,4 +1,0 @@
-#!/bin/sh
-WINE_BIN=wine
-PREFIX=~/.wine_reaper
-WINEPREFIX=$PREFIX WINEDEBUG=-all $WINE_BIN $PREFIX/drive_c/Program\ Files/REAPER\ \(x64\)/reaper.exe
