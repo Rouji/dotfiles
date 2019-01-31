@@ -1,7 +1,7 @@
 # start tmux
 tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$?
 command -v tmux>/dev/null; HAS_TMUX=$?
-if [[ $HAS_TMUX -eq 0 ]] && [[ $IS_TTY -ne 0 ]] && [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
+if [[ $HAS_TMUX -eq 0 ]] && [[ $IS_TTY -ne 0 ]] && [[ ! $TERM =~ screen ]]; then
     if tmux ls | grep -qv attached; then
         exec tmux attach
     else
@@ -24,6 +24,10 @@ autoload zmv
 
 autoload select-word-style
 select-word-style shell
+
+# ctrl-v in normal mode to edit cmd in editor
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd '^v' edit-command-line
 
 #auto-correct
 setopt correctall
@@ -133,7 +137,9 @@ alias s='noglob sentences -s'
 alias j='noglob jm'
 
 
-source ~/.zsh/powerline-prompt.zsh
+if [[ $IS_TTY -ne 0 ]]; then
+    source ~/.zsh/powerline-prompt.zsh
+fi
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]='none'
