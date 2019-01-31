@@ -1,0 +1,31 @@
+#!/bin/bash
+function conn {
+    jack_connect ${1}_1 ${2}_1
+    jack_connect ${1}_2 ${2}_2
+}
+
+function close {
+    killall jackd
+    killall alsa_in
+    killall alsa_out
+}
+
+trap close INT
+
+jackd -dalsa -dhw:USB -r44100 -p64 -n2 &
+sleep 1
+while pidof jackd; do
+    sleep 1
+    if ! pidof alsa_in; then
+        alsa_in -j alsa2jack -d cloop &
+        sleep 1
+        conn alsa2jack:capture system:playback
+    fi
+    if ! pidof alsa_out; then
+        alsa_out -j jack2alsa -d ploop &
+        sleep 1
+        conn system:capture jack2alsa:playback
+    fi
+done > /dev/null
+
+
