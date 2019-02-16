@@ -1,7 +1,7 @@
 #!/bin/bash
 HOST='https://x0.at/'
 RESP=$(curl -X POST \
-    --silent \
+    --progress-bar \
     -F "file=@$@" \
     $HOST)
 
