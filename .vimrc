@@ -32,6 +32,9 @@ Plugin 'davidhalter/jedi-vim'
 "autoformat code
 Plugin 'Chiel92/vim-autoformat'
 
+"indentation guides
+Plugin 'nathanaelkane/vim-indent-guides'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -48,9 +51,14 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+"indentation guides
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+let g:indent_guides_enable_on_vim_startup=1
+
 " ycm config
 "let g:ycm_always_populate_location_list=1
-"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 "snippets bindings
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -73,6 +81,9 @@ set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars map
 "persistent undo, swap files
 set undofile
 set swapfile
+
+"buffers don't need to be saved
+set hidden
 
 "set tabs to 4 spaces
 set tabstop=4
