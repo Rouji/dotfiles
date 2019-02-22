@@ -3,4 +3,8 @@ DIR="$HOME/Screenshots"
 DATE=`date +%Y-%m-%d_%I%M%S`
 FILE="$DIR/screenshot_$DATE.png"
 mkdir -p $DIR
-maim --hidecursor -s $FILE && upl $FILE
+if [[ -z $WAYLAND_DISPLAY ]]; then
+    maim --hidecursor -s $FILE && upl $FILE
+else
+    grim -g "$(slurp)" $FILE && upl $FILE
+fi

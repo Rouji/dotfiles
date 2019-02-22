@@ -1,3 +1,8 @@
+# run graphical session stuff if login on tty1
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    ~/bin/sway_session
+    exit 0
+fi
 # start tmux
 tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$?
 command -v tmux>/dev/null; HAS_TMUX=$?

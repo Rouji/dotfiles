@@ -1,0 +1,14 @@
+#!/bin/bash
+XIM_PROGRAM=fcitx
+XIM=fcitx
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+GDK_BACKEND=wayland
+CLUTTER_BACKEND=wayland
+XDG_SESSION_TYPE=wayland
+QT_QPA_PLATFORM=wayland-egl
+SDL_VIDEODRIVER=wayland
+
+$HOME/.jackdrc &
+sway
