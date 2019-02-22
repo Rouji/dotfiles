@@ -14,4 +14,7 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 export LANG=ja_JP.utf8
-export MAKEFLAGS='-j'
+export MAKEFLAGS="j`nproc`"
+export DXVK_HUD=fps
+
+
