@@ -55,6 +55,13 @@ pcm.micfilter {
     }
 }
 
+pcm.softvol {
+    type            softvol
+    slave.pcm       "default"
+    control.name    "softvol_master"
+    control.card    0
+}
+
 ### alsa -> jack bridge stuff
 
 # playback PCM device: using loopback subdevice 0,0
