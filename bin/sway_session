@@ -8,8 +8,9 @@ export XMODIFIERS=@im=fcitx
 export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
 export XDG_SESSION_TYPE=wayland
-export QT_QPA_PLATFORM=wayland-egl
+export QT_QPA_PLATFORM=wayland
 export SDL_VIDEODRIVER=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 
 $HOME/.jackdrc &
 
