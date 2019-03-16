@@ -34,7 +34,7 @@ floating_modifier $mod
 
 
 # start a terminal
-bindsym $mod+Return exec alacritty || xfce4-terminal || lxterminal || xterm
+bindsym $mod+Return exec xalacritty || xfce4-terminal || lxterminal || xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -247,9 +247,10 @@ bindsym $mod+z border none
 bindsym $mod+x border pixel 1
 
 output DP-2 mode 3840x2160
-output DP-2 bg backgrounds/bg.jpg fit #111111
+output DP-2 bg ~/backgrounds/bg.jpg fit #111111
 
 # run notification daemon
 exec mako
-exec swayidle timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' timeout 3600 'systemctl suspend'
+exec swayidle timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' timeout 1800 'systemctl suspend'
 exec fcitx-autostart
+exec kdeconnect-cli
