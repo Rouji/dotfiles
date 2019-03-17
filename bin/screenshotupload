@@ -1,10 +1,23 @@
 #!/bin/bash
 DIR="$HOME/Screenshots"
-DATE=`date +%Y-%m-%d_%I%M%S`
-FILE="$DIR/screenshot_$DATE.png"
+DATE=`date +%Y-%m-%d_%H%M%S`
+FILE="$DIR/screenshot_$DATE"
+PNG="$FILE.png"
+WEBP="$FILE.webp"
+
 mkdir -p $DIR
 if [[ -z $WAYLAND_DISPLAY ]]; then
-    maim --hidecursor -s $FILE && upl $FILE
+    maim --hidecursor -s $PNG
 else
-    grim -g "$(slurp)" $FILE && upl $FILE
+    grim -g "$(slurp)" $PNG
+fi
+
+# try to convert to webp
+convert "$PNG" -define webp:lossless=true "$WEBP"
+if [ $? -eq 0 ]; then
+    rm "$PNG"
+    exec upl "$WEBP"
+else
+    rm "$WEBP" || true
+    exec upl "$FILE"
 fi
