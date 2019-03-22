@@ -1,7 +1,6 @@
 # run graphical session stuff if login on tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    ~/bin/sway_session
-    exit 0
+    exec ~/bin/sway_session
 fi
 # start tmux
 tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$?
@@ -52,6 +51,7 @@ setopt pushd_ignore_dups
 #extended globbing
 setopt extendedglob
 unsetopt caseglob
+setopt glob_dots
 
 #vi-mode
 bindkey -v
