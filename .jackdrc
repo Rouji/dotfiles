@@ -1,9 +1,4 @@
 #!/bin/bash
-function conn {
-    jack_connect ${1}_1 ${2}_1
-    jack_connect ${1}_2 ${2}_2
-}
-
 function close {
     killall jackd
     killall alsa_in
@@ -19,12 +14,14 @@ while pidof jackd; do
     if ! pidof alsa_in; then
         alsa_in -j alsa2jack -d cloop &
         sleep 1
-        conn alsa2jack:capture system:playback
+        jack_connect alsa2jack:capture_1 system:playback_1
+        jack_connect alsa2jack:capture_2 system:playback_2
     fi
     if ! pidof alsa_out; then
         alsa_out -j jack2alsa -d ploop &
         sleep 1
-        conn system:capture jack2alsa:playback
+        jack_connect system:capture_1 jack2alsa:playback_1
+        #jack_connect system:capture_2 jack2alsa:playback_2
     fi
 done > /dev/null
 
