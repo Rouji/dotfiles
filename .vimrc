@@ -85,6 +85,9 @@ set swapfile
 "buffers don't need to be saved
 set hidden
 
+"reduce redrawing to speed things up
+set lazyredraw
+
 "set tabs to 4 spaces
 set tabstop=4
 set shiftwidth=4
