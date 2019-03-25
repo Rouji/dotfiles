@@ -19,5 +19,5 @@ if [ $? -eq 0 ]; then
     exec upl "$WEBP"
 else
     rm "$WEBP" || true
-    exec upl "$FILE"
+    exec upl "$PNG"
 fi
