@@ -1,0 +1,17 @@
+keymap H BACK
+keymap C-d NEXT_PAGE
+keymap C-u PREV_PAGE
+keymap C-j NEXT_LINK
+keymap C-k PREV_LINK
+keymap w NEXT_WORD
+keymap b PREV_WORD
+
+keymap r RELOAD
+keymap C-r REDRAW
+keymap e EXTERN
+keymap o GOTO
+keymap f GOTO_LINK
+
+keymap L LIST
+
+keymap C-q EXIT
