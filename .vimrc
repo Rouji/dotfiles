@@ -27,7 +27,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 
 "python stuff
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 
 "autoformat code
 Plugin 'Chiel92/vim-autoformat'
@@ -59,6 +59,7 @@ let g:indent_guides_enable_on_vim_startup=1
 " ycm config
 "let g:ycm_always_populate_location_list=1
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_seed_identifiers_with_syntax = 1
 
 "snippets bindings
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -126,6 +127,7 @@ colorscheme gruvbox
 
 "add relative line numbering
 set relativenumber
+set number
 
 "enable mouse stuff
 set mouse=a
