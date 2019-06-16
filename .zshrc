@@ -78,8 +78,6 @@ if [[ -x "`whence -p dircolors`" ]]; then
     eval `dircolors`
     alias ls='ls -F --color=auto'
     alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
 fi
 
 #grep alias
@@ -100,7 +98,6 @@ alias l='ls -CF'
 
 #zypper alias
 alias zi='sudo zypper in'
-alias ziy='sudo zypper in -y'
 alias zs='zypper se'
 alias zu='sudo zypper ref && sudo zypper dup'
 alias zr='sudo zypper rm'
@@ -141,11 +138,16 @@ alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias s='noglob sentences -s'
 alias j='noglob jm'
 
+alias t='date -Im'
+
 
 if [[ $IS_TTY -ne 0 ]]; then
     source ~/.zsh/powerline-prompt.zsh
 fi
 
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]='none'
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+HIGH=~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -f "$HIGH" ]]; then
+    typeset -A ZSH_HIGHLIGHT_STYLES
+    ZSH_HIGHLIGHT_STYLES[path]='none'
+    source "$HIGH"
+fi
