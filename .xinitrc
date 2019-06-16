@@ -12,6 +12,9 @@ xrdb -merge ~/.Xresources
 #qt theming
 QT_QPA_PLATFORMTHEME=qt5ct
 
+#autostart stuff
+kdeconnect-cli >/dev/null 2>&1 &
+~/bin/start_jack &
 
 unset WINDOW_MANAGER STARTUP
 exec $WINDOWMANAGER ${1+"$@"}
