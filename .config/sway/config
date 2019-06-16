@@ -34,7 +34,7 @@ floating_modifier $mod
 
 
 # start a terminal
-bindsym $mod+Return exec xalacritty || xfce4-terminal || lxterminal || xterm
+bindsym $mod+Return exec alacritty || xfce4-terminal || lxterminal || xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -237,10 +237,13 @@ for_window [title="^Program Error$"] move to workspace useless_crap
 #image viewer
 for_window [class="^feh"] floating enable
 
+#gw test
+for_window [title="Guild"] tiling enable
+
 #disable titlebars
 for_window [class="^.*"] pixel 1
-new_window pixel 1
-new_float pixel 1
+default_border pixel 1
+default_floating_border pixel 1
 
 #hotkeys for showing/hiding borders entirely
 bindsym $mod+z border none
@@ -248,6 +251,11 @@ bindsym $mod+x border pixel 1
 
 output DP-2 mode 3840x2160
 output DP-2 bg ~/backgrounds/bg.jpg fit #111111
+
+input type:keyboard {
+    repeat_delay 200
+    repeat_rate 50
+}
 
 # run notification daemon
 exec mako
