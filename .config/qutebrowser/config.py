@@ -341,7 +341,7 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}',
         'yt': 'https://www.youtube.com/results?search_query={}', 
         'tpb': 'http://thepiratebay.org/search/{}', 
         'lib': 'http://gen.lib.rus.ec/search.php?req={}', 
-        'am': 'https://www.amazon.de/s/url=search-alias%3Daps&field-keywords={}', 
+        'am': 'https://www.amazon.de/s?k={}', 
         'gh': 'https://geizhals.at/?fs={}&in=', 
         'gith': 'https://github.com/search?utf8=%E2%9C%93&q={}&type=', 
         'wh': 'https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={}'}
