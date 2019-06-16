@@ -8,3 +8,11 @@ CLONE
 git clone --bare https://github.com/Rouji/dotfiles.git ~/.dotfiles
 dot config --local status.showUntrackedFiles no
 dot reset --hard HEAD
+dot submodule init
+dot submodule update
+
+VIM
+run `.vim/install_vundle.vim` and then `:PluginInstall` inside vim
+
+TMUX
+`ctrl+a I` in tmux to install plugins
