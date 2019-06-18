@@ -11,8 +11,8 @@ dot reset --hard HEAD
 dot submodule init
 dot submodule update
 
-VIM
-run `.vim/install_vundle.vim` and then `:PluginInstall` inside vim
+(N)VIM
+vim-plug will be downloaded on first launch, run :PlugInstall to install the plugins
 
 TMUX
 `ctrl+a I` in tmux to install plugins
