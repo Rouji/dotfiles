@@ -182,3 +182,8 @@ map <F10> :w <Bar> if filereadable('Makefile') <Bar> silent make! &> /dev/null <
 
 " automatic spellcheck on text files
 autocmd BufRead,BufNewFile *.md,*.txt,*.tex setlocal spell
+
+" include text editing stuff
+if !empty(glob("~/.vim/txtfunc.vim"))
+    source ~/.vim/txtfunc.vim
+endif
