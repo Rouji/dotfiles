@@ -11,5 +11,6 @@ echo $RESP
 
 echo -n "$RESP" | xclip -selection clipboard
 echo -n "$RESP" | xclip -selection primary
+echo -n "$RESP" | wl-copy
 
 notify-send 'upload' "$RESP"
