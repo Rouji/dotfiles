@@ -42,8 +42,6 @@ bindsym $mod+Shift+q kill
 # start program launcher
 #bindsym $mod+d exec dmenu_run -i -l 20 -fn "xos4 terminus-8"
 bindsym $mod+d exec rofi -show run -font "xos4 terminus 8" -width 30
-# start windows switcher
-bindsym $mod+s exec rofi -show window -font "xos4 terminus 8" -width 30
 
 # open new browser window
 bindsym $mod+q exec --no-startup-id qb
@@ -55,11 +53,10 @@ bindsym --release Print exec xfce4-screenshooter
 bindsym --release $mod+Print exec screenshotupload
 
 # pause/resume process of active window
-# TODO: this don't work on no wayland
-#bindsym $mod+Shift+p exec "kill -STOP $(xdotool getactivewindow getwindowpid)"
-#bindsym $mod+p exec "kill -CONT $(xdotool getactivewindow getwindowpid)"
+bindsym $mod+Shift+p exec "kill -STOP $(active_window_pid)"
+bindsym $mod+p exec "kill -CONT $(active_window_pid)"
 # KILL process of active window
-#bindsym $mod+Shift+z exec "kill -KILL $(xdotool getactivewindow getwindowpid)"
+bindsym $mod+Shift+z exec "kill -KILL $(active_window_pid)"
 
 set $left h
 set $up k
@@ -245,14 +242,12 @@ for_window [class="^.*"] pixel 1
 default_border pixel 1
 default_floating_border pixel 1
 
-#hotkeys for showing/hiding borders entirely
-bindsym $mod+z border none
-bindsym $mod+x border pixel 1
 
 output DP-2 mode 3840x2160
 output DP-2 bg ~/backgrounds/bg.jpg fit #111111
 
 input type:keyboard {
+    xkb_options compose:ralt
     repeat_delay 200
     repeat_rate 50
 }
