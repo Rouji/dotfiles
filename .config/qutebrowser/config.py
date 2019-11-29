@@ -308,7 +308,7 @@ c.tabs.title.alignment = 'left'
 # is enabled. * `{current_url}`: URL of the current web page. *
 # `{protocol}`: Protocol (http/https/...) of the current web page.
 # Type: FormatString
-c.tabs.title.format = '{perc}{title}'
+c.tabs.title.format = '{perc}{current_title}'
 
 # Format to use for the tab title for pinned tabs. The same placeholders
 # like for `tabs.title.format` are defined.
