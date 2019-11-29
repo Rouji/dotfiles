@@ -38,7 +38,7 @@ autocmd BufRead,BufNewFile *.md,*.txt xnoremap <F6> :call Mecab()<CR>
 function! Sentences() range
     let n = @n
     silent! normal gv"ny
-    let out = system("sentences -s '" . @n . "'")
+    let out = system("sentences --limit 100 -s '" . @n . "'")
     let @n = n
     call Scratch(out)
 endfunction
