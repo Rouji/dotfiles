@@ -25,7 +25,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'honza/vim-snippets'
 
 " language-server integration for completion etc.
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "autoformat code
 Plug 'Chiel92/vim-autoformat'
