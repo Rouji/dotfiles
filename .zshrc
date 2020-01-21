@@ -37,9 +37,10 @@ bindkey -M vicmd '^v' edit-command-line
 setopt correctall
 
 HISTFILE=~/.zshhist
+HISTORY_IGNORE='^ .*'
 HISTSIZE=5000
 SAVEHIST=500000
-setopt appendhistory sharehistory
+setopt appendhistory sharehistory histignorespace
 
 #cd by typing only dirname, without "cd"
 setopt auto_cd
@@ -83,6 +84,10 @@ fi
 #grep alias
 alias i='grep -i'
 
+#find case-insensitively
+function findi() { find $1 -iname "$2" };
+alias f="noglob findi"
+
 #ps grep alias
 alias psg='ps aux | grep -i'
 
@@ -99,7 +104,7 @@ alias l='ls -CF'
 #zypper alias
 alias zi='sudo zypper in'
 alias zs='zypper se'
-alias zu='sudo zypper ref && sudo zypper dup'
+alias zu='sudo zypper ref && sudo zypper dup --auto-agree-with-licenses --auto-agree-with-product-licenses'
 alias zr='sudo zypper rm'
 
 #git alias
