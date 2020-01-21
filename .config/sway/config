@@ -41,7 +41,8 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 #bindsym $mod+d exec dmenu_run -i -l 20 -fn "xos4 terminus-8"
-bindsym $mod+d exec rofi -show run -font "Terminus (TTF) 8" -width 30
+#bindsym $mod+d exec rofi -show run -font "Terminus (TTF) 9" -width 30
+bindsym $mod+d exec alacritty -t fzf_launch -e fzf_launch
 
 # open new browser window
 bindsym $mod+q exec --no-startup-id qb
@@ -233,6 +234,8 @@ for_window [title="openurl_mpv"] floating enable
 for_window [title="^Program Error$"] move to workspace useless_crap
 #image viewer
 for_window [class="^feh"] floating enable
+#terminal based launcher
+for_window [title="^fzf_launch$"] floating enable
 
 #gw test
 for_window [title="Guild"] tiling enable

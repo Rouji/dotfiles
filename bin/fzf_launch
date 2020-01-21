@@ -1,0 +1,8 @@
+#!/bin/sh
+
+IFS=':'
+RUN=$(for P in $PATH; do ls "$P"; done | fzf --reverse -x) || exit
+
+# TODO: spawned process gets killed if we exit too quickly
+# there has to be a better way than this hacky sleep thing :thinking:
+setsid "$RUN" & sleep 0.1
