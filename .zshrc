@@ -37,7 +37,6 @@ bindkey -M vicmd '^v' edit-command-line
 setopt correctall
 
 HISTFILE=~/.zshhist
-HISTORY_IGNORE='^ .*'
 HISTSIZE=5000
 SAVEHIST=500000
 setopt appendhistory sharehistory histignorespace
