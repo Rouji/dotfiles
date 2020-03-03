@@ -58,10 +58,10 @@ bindsym --release Print exec xfce4-screenshooter
 bindsym --release $mod+Print exec screenshotupload
 
 # pause/resume process of active window
-bindsym $mod+Shift+p exec "kill -STOP $(xdotool getactivewindow getwindowpid)"
-bindsym $mod+p exec "kill -CONT $(xdotool getactivewindow getwindowpid)"
+bindsym $mod+Shift+p exec "kill -STOP $(active_window_pid)"
+bindsym $mod+p exec "kill -CONT $(active_window_pid)"
 # KILL process of active window
-bindsym $mod+Shift+z exec "kill -KILL $(xdotool getactivewindow getwindowpid)"
+bindsym $mod+Shift+z exec "kill -KILL $(active_window_pid)"
 
 set $left h
 set $up k
@@ -211,7 +211,7 @@ client.focused_inactive #000000 #000000 #ffffff #000000 #000000
 bar {
 	position top
 #        status_command i3status
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        status_command i3blocks
         font pango: xos4 Terminus 8
         tray_output primary
 

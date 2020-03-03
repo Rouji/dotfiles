@@ -207,9 +207,8 @@ client.focused_inactive #000000 #000000 #ffffff #000000 #000000
 bar {
 	position top
 #        status_command i3status
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        status_command i3blocks
         font pango: Terminus (TTF) 9
-        tray_output primary
 
         colors {
 		background #000000
@@ -246,8 +245,11 @@ default_border pixel 1
 default_floating_border pixel 1
 
 
-output DP-2 mode 3840x2160
-output DP-2 bg ~/backgrounds/bg.jpg fit #111111
+output DP-2 {
+    mode 3840x2160
+    max_render_time 2
+    bg ~/backgrounds/bg.jpg fit #111111
+}
 
 input type:keyboard {
     xkb_options compose:ralt
