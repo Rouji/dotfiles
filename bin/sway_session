@@ -11,6 +11,7 @@ export XDG_SESSION_TYPE=wayland
 export QT_QPA_PLATFORM=wayland-egl
 export SDL_VIDEODRIVER=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export GDK_SCALE=1  # fix (mainly steam) gdk scale
 
 $HOME/bin/start_jack &
 udiskie -an &
