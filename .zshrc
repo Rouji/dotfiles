@@ -99,7 +99,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-
 #zypper alias
 alias zi='sudo zypper in'
 alias zs='zypper se'
@@ -144,6 +143,23 @@ alias j='noglob jm'
 
 alias t='date -Im'
 
+#check for updates to dotfiles daily and auto-(kinda)-update
+DOTUPDFILE="${TMPDIR:-/tmp}/dotfiles_upd_$UID"
+LASTUPD=$(stat -c '%Y' $DOTUPDFILE 2>/dev/null)
+NEXTUPD=((LASTUPD + (24 * 60 * 6)))
+if [[ $? -ne 0 ]] || [[ $(date '+%s') -gt $NEXTUPD ]]; then
+    echo "Checking for dotfiles updates."
+    dot remote update > /dev/null
+    if [[ $? -eq 0 ]]; then
+        dot status | grep -q "branch is up to date"
+        if [[ $? -ne 0 ]]; then
+            dot pull
+        else
+            clear
+        fi
+    fi
+    touch $DOTUPDFILE
+fi
 
 if [[ $IS_TTY -ne 0 ]]; then
     source ~/.zsh/powerline-prompt.zsh
