@@ -7,7 +7,7 @@ function close {
 
 trap close INT
 
-jackd -dalsa -dhw:USB -r44100 -p64 -n2 &
+jackd -dalsa -dhw:CARD=USB -r44100 -p64 -n2 &
 sleep 1
 while pidof jackd; do
     sleep 1
