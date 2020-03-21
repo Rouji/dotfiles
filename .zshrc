@@ -146,7 +146,7 @@ alias t='date -Im'
 #check for updates to dotfiles daily and auto-(kinda)-update
 DOTUPDFILE="${TMPDIR:-/tmp}/dotfiles_upd_$UID"
 LASTUPD=$(stat -c '%Y' $DOTUPDFILE 2>/dev/null)
-NEXTUPD=((LASTUPD + (24 * 60 * 6)))
+NEXTUPD=((LASTUPD + (24 * 60 * 60)))
 if [[ $? -ne 0 ]] || [[ $(date '+%s') -gt $NEXTUPD ]]; then
     echo "Checking for dotfiles updates."
     dot remote update > /dev/null
