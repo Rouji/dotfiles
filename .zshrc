@@ -154,6 +154,8 @@ if [[ $? -ne 0 ]] || [[ $(date '+%s') -gt $NEXTUPD ]]; then
         dot status | grep -q "branch is up to date"
         if [[ $? -ne 0 ]]; then
             dot pull
+            dot submodule init
+            dot submodule update
         else
             clear
         fi
