@@ -33,6 +33,12 @@ Plug 'Chiel92/vim-autoformat'
 "indentation guides
 Plug 'nathanaelkane/vim-indent-guides'
 
+" sidebar for tags
+Plug 'majutsushi/tagbar'
+
+" better c++ highlighting
+Plug 'octol/vim-cpp-enhanced-highlight'
+
 call plug#end()
 
 "indentation guides
@@ -84,6 +90,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
+
+" better c++ highlighting settings
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_posix_standard = 1
 
 "display trailing whitespace
 set list          " Display unprintable characters f12 - switches
