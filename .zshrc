@@ -154,12 +154,10 @@ function update_dotfiles() {
         if [[ $? -eq 0 ]]; then
             dot status | grep -q "branch is up to date"
             if [[ $? -ne 0 ]]; then
-                dot pull
+                dot pull --no-edit
                 dot submodule init
                 dot submodule update
-                make
-            else
-                echo "Couldn't fetch dotfiles remote"
+                command -v make >/dev/null && make
             fi
         fi
         touch $DOTUPDFILE
