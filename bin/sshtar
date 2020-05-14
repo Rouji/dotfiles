@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ "$#" -ne 3 ]; then
+    echo "usage: $0 <src> <ssh_host> <dest>"
+    exit 1
+fi
+tar c $1 | pigz -4 | ssh $2 "tar -C $3 -xzv"
