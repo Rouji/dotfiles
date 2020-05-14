@@ -3,9 +3,9 @@
 IFS=':'
 RUN=$(for P in $PATH; do ls "$P"; done | fzf --reverse -x) || exit
 
-if [ -n $SWAYSOCK ]; then
+if [[ -n $SWAYSOCK ]]; then
     exec swaymsg exec $RUN
-elif [ -n $I3SOCK ]; then
+elif [[ -n $I3SOCK ]]; then
     exec i3-msg exec $RUN
 else
     # TODO: spawned process gets killed if we exit too quickly
