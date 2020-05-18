@@ -13,8 +13,6 @@ export SDL_VIDEODRIVER=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export GDK_SCALE=1  # fix (mainly steam) gdk scale
 export QT_WEBENGINE_DISABLE_WAYLAND_WORKAROUND=1
-
-$HOME/bin/start_jack &
-udiskie -an &
+export _JAVA_AWT_WM_NONREPARENTING=1 # fix some java windows going blank
 
 exec sway
