@@ -1,0 +1,13 @@
+[Unit]
+Description=pipes jack output through the alsa loop (i.e. to use as input in alsa clients)
+Requires=jackd.service
+After=jackd.service
+
+[Service]
+ExecStart=alsa_out -j jack2alsa -d ploop
+ExecStartPost=sleep 1
+ExecStartPost=jack_connect system:capture_1 jack2alsa:playback_1
+Restart=always
+
+[Install]
+WantedBy=default.target

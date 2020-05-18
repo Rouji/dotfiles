@@ -1,0 +1,7 @@
+[Service]
+Description=systemwide jackd thing
+ExecStart=jackd -dalsa -dhw:CARD=USB -r44100 -p64 -n2
+Restart=always
+
+[Install]
+WantedBy=default.target
