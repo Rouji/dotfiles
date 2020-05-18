@@ -1,0 +1,8 @@
+[Service]
+Description=automounter
+ExecStart=udiskie -an
+Restart=always
+
+[Install]
+WantedBy=default.target
+
