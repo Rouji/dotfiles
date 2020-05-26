@@ -180,7 +180,7 @@ mode  "(s)leep (h)ibernate (r)estart shut(d)own" {
 
         bindsym s exec systemctl suspend; mode "default"
         bindsym h exec systemctl hibernate; mode "default"
-        bindsym d exec systemctl shutdown; mode "default"
+        bindsym d exec systemctl poweroff; mode "default"
         bindsym r exec systemctl reboot; mode "default"
 
         bindsym Return mode "default"
@@ -247,7 +247,6 @@ default_floating_border pixel 1
 
 output DP-2 {
     mode 3840x2160
-    max_render_time 2
     bg ~/backgrounds/bg.jpg fit #111111
 }
 
