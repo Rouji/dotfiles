@@ -1,8 +1,11 @@
 #!/bin/bash
 HOST='https://x0.at/'
+THUMB_SIZE=512
+THUMB_FILE="${TMPDIR:-/tmp}/upl_thumb_$UID.png"
+FILE=$1
 RESP=$(curl -X POST \
     --progress-bar \
-    -F "file=@$@" \
+    -F "file=@$FILE" \
     $HOST)
 
 RESP=$(echo $RESP | tr -d '\n' | tr -d '\r')
@@ -13,4 +16,7 @@ echo -n "$RESP" | xclip -selection clipboard
 echo -n "$RESP" | xclip -selection primary
 echo -n "$RESP" | wl-copy
 
-notify-send 'upload' "$RESP"
+echo "$FILE" | grep -qi '\(png\|gif\|jpe\?g\|bmp\|webp\|tif\?f\)' && convert "$FILE" -thumbnail "${THUMB_SIZE}x${THUMB_SIZE}^" -gravity center -extent "${THUMB_SIZE}x${THUMB_SIZE}" "$THUMB_FILE" 2>/dev/null
+
+notify-send -i $THUMB_FILE 'upload' "$RESP"
+rm "$THUMB_FILE"
