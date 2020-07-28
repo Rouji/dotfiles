@@ -13,3 +13,6 @@
 [submodule "Documents/lmdbjdict/tinyxml2"]
 	path = Documents/lmdbjdict/tinyxml2
 	url = https://github.com/leethomason/tinyxml2.git
+[submodule ".weechat/python/vimode"]
+	path = .weechat/python/vimode
+	url = https://github.com/GermainZ/weechat-vimode.git
