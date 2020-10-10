@@ -1,0 +1,48 @@
+#!/bin/bash
+
+if [ "$#" -lt 1 ]; then
+    echo -e "usage: $0 <command> [args...]\n"
+    echo "Runs given command in a (very thin) pulseaudio sandbox (temporary, randomly generated PULSE_RUNTIME_PATH) which connects to jack."
+    echo "This keeps other programs from automatically discovering the PA daemon and switching their output from alsa/jack to PA."
+    exit 1
+fi
+
+export PULSE_RUNTIME_PATH=`mktemp -d`
+PULSE_CONFIG="$PULSE_RUNTIME_PATH/pulse.conf"
+
+# write PA daemon config
+cat <<END > $PULSE_CONFIG
+.fail
+
+#load-module module-null-sink channels=2
+load-module module-native-protocol-unix
+load-module module-jack-sink
+load-module module-jack-source
+
+.ifexists module-jackdbus-detect.so
+.nofail
+load-module module-jackdbus-detect channels=2
+.fail
+.endif
+END
+
+# can't have 2 instances of PA on the same dbus, unfortunately
+eval $(dbus-launch --sh-syntax)
+
+# PA stores crap in $HOME, so we're moving that to /tmp too
+HOME=$PULSE_RUNTIME_PATH  pulseaudio -n -F "$PULSE_CONFIG" &
+PA_PID=$!
+
+echo "PULSE_RUNTIME_PATH=$PULSE_RUNTIME_PATH"
+echo "PA PID: $PA_PID"
+echo "DBUS_SESSION_BUS_PID=$DBUS_SESSION_BUS_PID"
+
+function cleanup() {
+    HOME=$PULSE_RUNTIME_PATH pulseaudio --kill || kill $PA_PID
+    kill $DBUS_SESSION_BUS_PID
+    rm -r "$PULSE_RUNTIME_PATH"
+}
+
+trap cleanup EXIT
+
+$@
