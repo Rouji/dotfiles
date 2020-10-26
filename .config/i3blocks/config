@@ -50,7 +50,7 @@ interval=1
 
 [cpubars]
 command=~/.status_blocks/cpubars
-label=cpu
+label=cpu 
 interval=persist
 markup=pango
 
@@ -61,16 +61,16 @@ interval=persist
 [disk-io]
 interval=persist
 markup=pango
-label=hdd
+label=hdd 
 
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-label=mem
+label=mem 
 separator=true
 interval=30
 
 [memory]
-label=swap
+label=swap 
 instance=swap
 separator=true
 interval=30
