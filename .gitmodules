@@ -16,3 +16,6 @@
 [submodule ".weechat/python/vimode"]
 	path = .weechat/python/vimode
 	url = https://github.com/GermainZ/weechat-vimode.git
+[submodule ".weechat/scripts.git"]
+	path = .weechat/scripts.git
+	url = https://github.com/weechat/scripts.git

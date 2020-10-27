@@ -1,1 +1,1 @@
-vimode/vimode.py
+../scripts.git/python/vimode.py
