@@ -104,6 +104,7 @@ alias zi='sudo zypper in'
 alias zs='zypper se'
 alias zu='sudo zypper ref && sudo zypper dup --auto-agree-with-licenses --auto-agree-with-product-licenses'
 alias zr='sudo zypper rm'
+alias zif='zypper --xmlout search | grep -o "name=.*" | cut -d\" -f2 | fzf -m --preview "zypper info {1}" | xargs -r sudo zypper in'
 
 #git alias
 alias gs='git status'
@@ -120,6 +121,8 @@ alias c='xclip -selection clipboard'
 alias cx='xclip'
 alias p='xclip -selection clipboard -o'
 alias px='xclip -o'
+
+alias killf='ps --no-headers aux | fzf -m | awk "{print \$2}" | xargs -r kill'
 
 #(n)vim alias
 export EDITOR=vi
