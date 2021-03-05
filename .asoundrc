@@ -75,7 +75,7 @@ pcm.amix {
         period_size 512
         buffer_size 2048
         periods 2
-        rate 44100
+        rate 48000
         format S32_LE
         channels 2
     }
@@ -96,7 +96,7 @@ pcm.asnoop {
         period_time 0
         period_size 1024
         buffer_size 4096
-        rate 44100
+        rate 48000
         format S32_LE
         channels 2 
     }
