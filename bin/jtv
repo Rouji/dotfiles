@@ -5,4 +5,4 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 CHAN=$1
-exec mpv `curl -s https://mov3.co/ja/$CHAN/ | grep -ohE 'https://ok.ru/videoembed/[0-9]+'`
+exec mpv `curl -s https://mov3.co/ja/$CHAN/ | grep -ohE 'https://vaughn.live/embed/video/[0-9A-Za-z]+'`
