@@ -208,7 +208,7 @@ input type:keyboard {
 for_window [title="^fzf_launch$"] floating enable
 
 exec mako
-exec swayidle timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' timeout 1800 'systemctl suspend'
+exec swayidle timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 exec fcitx-autostart
 exec kdeconnect-cli
 
