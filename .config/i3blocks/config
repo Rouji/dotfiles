@@ -29,7 +29,8 @@ markup=none
 
 #active window title
 [active]
-interval=1
+command=swaymsg -t subscribe -m '["window"]' | jq --unbuffered -r 'select(.change=="focus" or .container.focused == true) | .container.name'
+interval=persist
 
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
