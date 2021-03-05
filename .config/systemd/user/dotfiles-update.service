@@ -1,0 +1,11 @@
+[Service]
+Description=updates dotfiles
+WorkingDirectory=%h
+ExecStart=sh -c 'git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull --no-edit && \
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule init && \
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule update && \
+make'
+
+[Install]
+WantedBy=default.target
+

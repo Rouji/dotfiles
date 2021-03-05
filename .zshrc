@@ -146,29 +146,6 @@ alias j='noglob jm'
 
 alias t='date -Im'
 
-function update_dotfiles() {
-    #check for updates to dotfiles daily and auto-(kinda)-update
-    DOTUPDFILE="${TMPDIR:-/tmp}/dotfiles_upd_$UID"
-    LASTUPD=$(stat -c '%Y' $DOTUPDFILE 2>/dev/null)
-    NEXTUPD=((LASTUPD + (24 * 60 * 60)))
-    if [[ $? -ne 0 ]] || [[ $(date '+%s') -gt $NEXTUPD ]]; then
-        echo "Checking for dotfiles updates."
-        dot remote update > /dev/null
-        if [[ $? -eq 0 ]]; then
-            dot status | grep -q "branch is up to date"
-            if [[ $? -ne 0 ]]; then
-                dot pull --no-edit
-                dot submodule init
-                dot submodule update
-                command -v make >/dev/null && make
-            fi
-        fi
-        touch $DOTUPDFILE
-    fi
-}
-
-(update_dotfiles &)
-
 if [[ $IS_TTY -ne 0 ]]; then
     source ~/.zsh/powerline-prompt.zsh
 fi
