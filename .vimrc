@@ -94,6 +94,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
 
+" disable fzf preview because it's very slow
+let g:fzf_preview_window = ''
+
 " better c++ highlighting settings
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
