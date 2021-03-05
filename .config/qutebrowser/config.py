@@ -172,17 +172,9 @@ c.fonts.prompts = '8pt monospace'
 # Type: Font
 c.fonts.statusbar = '8pt monospace'
 
-# Font used in the tab bar.
-# Type: QtFont
-c.fonts.tabs = '8pt monospace'
-
 # Characters used for hint strings.
 # Type: UniqueCharString
 c.hints.chars = 'qwerasdf'
-
-# Hide the statusbar unless a message is shown.
-# Type: Bool
-c.statusbar.hide = False
 
 # Padding (in pixels) for the statusbar.
 # Type: Padding
