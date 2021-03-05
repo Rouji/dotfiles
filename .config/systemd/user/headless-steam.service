@@ -3,22 +3,15 @@ Description=headless sway session running steam for streaming
 
 [Service]
 UnsetEnvironment=WAYLAND_DISPLAY DISPLAY SWAYSOCK I3SOCK
-Environment=WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 PULSE_RUNTIME_PATH=%T/%U-headless_steam_pulse_runtime
+Environment=WLR_BACKENDS=headless WLR_LIBINPUT_NO_DEVICES=1 DISPLAY=:42
 ExecStartPre=sh -c "printf \"\
 output HEADLESS-1 resolution 1920x1080\n\
 default_border pixel 1\n\
 default_floating_border pixel 1\n\
-exec steam\n\
+exec ~/bin/pasandbox steam\n\
+exec wayvnc 0.0.0.0\n\
 \" > %T/%U-headless_steam_sway"
-ExecStartPre=sh -c "printf \"\
-.fail\n\
-load-module module-null-sink channels=2\n\
-load-module module-native-protocol-unix\n\
-\" > %T/%U-headless_steam_pulse"
-ExecStartPre=pulseaudio -n -D -F %T/%U-headless_steam_pulse
 ExecStart=sway -c %T/%U-headless_steam_sway
-ExecStopPost=pulseaudio --kill
-ExecStopPost=rm %T/%U-headless_steam_sway
 Restart=always
 
 [Install]
