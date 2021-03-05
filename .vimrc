@@ -39,6 +39,9 @@ Plug 'majutsushi/tagbar'
 " better c++ highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 
+" openscad syntax
+Plug 'sirtaj/vim-openscad'
+
 call plug#end()
 
 "indentation guides
