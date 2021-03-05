@@ -152,6 +152,9 @@ set t_Co=256
 set background=dark
 colorscheme gruvbox
 
+"remove background from vertical split line
+highlight VertSplit ctermbg=NONE
+
 "add relative line numbering
 set relativenumber
 set number
