@@ -29,7 +29,7 @@ markup=none
 
 #active window title
 [active]
-command=swaymsg -t subscribe -m '["window"]' | jq --unbuffered -r 'select(.change=="focus" or .container.focused == true) | .container.name'
+command=unbuffer swaymsg -t subscribe -m '["window"]' | jq --unbuffered -r 'select(.change=="focus" or .container.focused == true) | .container.name'
 interval=persist
 
 # The first parameter sets the step (and units to display)
