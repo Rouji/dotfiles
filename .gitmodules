@@ -7,12 +7,6 @@
 [submodule ".status_blocks"]
 	path = .status_blocks
 	url = https://github.com/Rouji/status_blocks.git
-[submodule "Documents/rei/lmdbpp"]
-	path = Documents/rei/lmdbpp
-	url = https://github.com/Rouji/lmdbpp.git
-[submodule "Documents/lmdbjdict/tinyxml2"]
-	path = Documents/lmdbjdict/tinyxml2
-	url = https://github.com/leethomason/tinyxml2.git
 [submodule ".weechat/python/vimode"]
 	path = .weechat/python/vimode
 	url = https://github.com/GermainZ/weechat-vimode.git
