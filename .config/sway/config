@@ -152,8 +152,8 @@ mode "resize" {
 # shutdown mode
 mode  "(s)leep (h)ibernate (r)estart shut(d)own" {
 
-        bindsym s exec systemctl suspend; mode "default"
-        bindsym h exec systemctl hibernate; mode "default"
+        bindsym s exec swaylock; exec systemctl suspend; mode "default"
+        bindsym h exec swaylock; exec systemctl hibernate; mode "default"
         bindsym d exec systemctl poweroff; mode "default"
         bindsym r exec systemctl reboot; mode "default"
 
