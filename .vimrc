@@ -1,11 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-"download vim-plug if it's not there yet
-if empty(glob("~/.vim/plug.vim"))
-    execute '!curl -fLo ~/.vim/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-endif
-
 "source vim-plug
 execute "source ".glob("~/.vim/plug.vim")
 
