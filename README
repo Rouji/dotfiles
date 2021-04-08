@@ -9,6 +9,3 @@ git clone --bare https://github.com/Rouji/dotfiles.git ~/.dotfiles
 dot config --local status.showUntrackedFiles no
 dot reset --hard HEAD
 make update
-
-TMUX
-`ctrl+a I` in tmux to install plugins
