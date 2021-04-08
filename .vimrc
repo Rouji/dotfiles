@@ -192,6 +192,9 @@ let g:airline_powerline_fonts = 1
 "f9 to run stuff
 autocmd FileType python nnoremap <F9> :!%:p<CR>
 
+"yaml settings
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2
+
 "f10 to make
 map <F10> :w <Bar> if filereadable('Makefile') <Bar> silent make! &> /dev/null <Bar> endif <CR>
 
