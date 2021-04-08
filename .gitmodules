@@ -13,3 +13,6 @@
 [submodule ".weechat/scripts.git"]
 	path = .weechat/scripts.git
 	url = https://github.com/weechat/scripts.git
+[submodule ".gdb/gef"]
+	path = .gdb/gef
+	url = https://github.com/hugsy/gef.git
