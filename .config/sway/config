@@ -24,7 +24,6 @@ bindsym $mod+q exec --no-startup-id qb
 # open rofi keepass thingy
 bindsym $mod+Ctrl+k exec keepmenu
 
-bindsym --release Print exec xfce4-screenshooter
 bindsym --release $mod+Print exec screenshotupload
 
 # shorten URL in clipboard
