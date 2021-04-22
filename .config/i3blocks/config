@@ -56,7 +56,7 @@ interval=persist
 markup=pango
 
 [bandwidth]
-command=~/.status_blocks/bandwidth enp30s0
+command=~/.status_blocks/bandwidth $(ip route | grep default | awk '{print $NF}')
 interval=persist
 
 [disk-io]
