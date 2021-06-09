@@ -145,6 +145,7 @@ set colorcolumn=81,101
 "set colour scheme
 set t_Co=256
 set background=dark
+set termguicolors
 colorscheme gruvbox
 
 "remove background from vertical split line
