@@ -172,8 +172,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"make ; do the same as :
+"swap ; and :
 nnoremap ; :
+nnoremap : ;
 
 "fold using space
 nnoremap <space> za
