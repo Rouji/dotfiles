@@ -200,6 +200,7 @@ bindsym $mod+Shift+s exec i3-input -F 'rename workspace to "%s"' -P 'New name fo
 for_window [class="^.*"] pixel 1
 default_border pixel 1
 default_floating_border pixel 1
+smart_borders on
 
 input type:keyboard {
     xkb_options compose:ralt
