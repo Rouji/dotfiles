@@ -6,96 +6,37 @@ execute "source ".glob("~/.vim/plug.vim")
 
 call plug#begin('~/.vim/vimplugs')
 
+"gruvbox colour scheme
+Plug 'gruvbox-community/gruvbox'
+
 "git integration
 Plug 'tpope/vim-fugitive'
+
 "git status column
-Plug 'airblade/vim-gitgutter'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 
 "status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'hoob3rt/lualine.nvim'
 
-"snippets
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-
-" language-server integration for completion etc.
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 "autoformat code
 Plug 'Chiel92/vim-autoformat'
 
 "indentation guides
-Plug 'nathanaelkane/vim-indent-guides'
-
-" sidebar for tags
-Plug 'majutsushi/tagbar'
-
-" better c++ highlighting
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " openscad syntax
 Plug 'sirtaj/vim-openscad'
 
 call plug#end()
 
-"indentation guides
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-let g:indent_guides_enable_on_vim_startup=1
-
-"snippets bindings
-" let g:UltiSnipsExpandTrigger="<C-j>"
-" let g:UltiSnipsJumpForwardTrigger="<Tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-
-" coc config
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-" use <tab> and <s-tab> to navigate completion list
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" use <cr> to confirm completion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" make <cr> select the first completion item and confirm the completion when no item has been selected
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-
-"airline config
-set ttimeoutlen=50
-set laststatus=2
-"let g:airline_theme = 'powerlineish'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#hunks#enabled=0
-let g:airline#extensions#branch#enabled=1
 
 " disable fzf preview because it's very slow
 let g:fzf_preview_window = ''
-
-" better c++ highlighting settings
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_posix_standard = 1
 
 "display trailing whitespace
 set list          " Display unprintable characters f12 - switches
@@ -191,17 +132,120 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 "enable powerline symbols
 let g:airline_powerline_fonts = 1
 
-"f9 to run stuff
-autocmd FileType python nnoremap <F9> :!%:p<CR>
-
 "yaml settings
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2
 
-"f10 to make
-map <F10> :w <Bar> if filereadable('Makefile') <Bar> silent make! &> /dev/null <Bar> endif <CR>
-
 " automatic spellcheck on text files
 autocmd BufRead,BufNewFile *.md,*.txt,*.tex setlocal spell
+
+"compe autocomplete stuff
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.resolve_timeout = 800
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.spell = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+
+"inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+" compe (shift-)tab to navigate completions
+lua <<EOF
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn['vsnip#available'](1) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
+  else
+    -- If <S-Tab> is not working in your terminal, change it to <C-h>
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+EOF
+
+" treesitter config
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
+" lsp config
+lua <<EOF
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.clangd.setup{}
+EOF
+
+" lualine config
+lua <<EOF
+require('lualine').setup{
+    options = {
+        theme = 'gruvbox',
+        extensions = {'fugitive'}
+    }
+}
+EOF
+
+"indentation guide config
+lua <<EOF
+vim.g.indent_blankline_char_list = {"|"}
+vim.g.indent_blankline_show_first_indent_level = false
+EOF
+
+" run gitsigns
+lua require('gitsigns').setup()
 
 " include text editing stuff
 if !empty(glob("~/.vim/txtfunc.vim"))
