@@ -5,28 +5,49 @@ import sys
 import re
 import subprocess
 import os.path
+from typing import Generator
+from requests import head
 from xdg.BaseDirectory import xdg_config_dirs
+from dataclasses import dataclass
+from enum import Enum, auto
 
 urls = sys.argv[1:]
 
-def config_line():
-    for cdir in xdg_config_dirs:
-        cfile = os.path.join(cdir, 'openurl.conf')
-        if not os.path.isfile(cfile):
-            continue
-        with open(cfile) as f:
-            for line in f:
-                yield line.split()
+class ConfigLineType(Enum):
+    url = auto()
+    mime = auto()
 
-for u in urls:
+@dataclass(frozen=True)
+class ConfigLine:
+    type: ConfigLineType
+    regex: str
+    command: str
+
+def config_line() -> Generator[ConfigLine,None,None]:
+    for config_dir in xdg_config_dirs:
+        config_file = os.path.join(config_dir, 'openurl.conf')
+        if not os.path.isfile(config_file):
+            continue
+        with open(config_file) as f:
+            for line in f:
+                spl = line.split(None, 2)
+                yield ConfigLine(ConfigLineType[spl[0]], spl[1], spl[2])
+
+def get_mime(url: str) -> str:
+    try:
+        return head(url).headers['Content-Type'].split(';')[0].strip()
+    except:
+        return ''
+
+for url in urls:
     opened = False
-    for c in config_line():
-        reg = c[0]
-        args = c[1:]
-        if re.search(reg, u) is not None:
-            subprocess.Popen(['notify-send', 'opening with ' + args[0], u])
-            subprocess.Popen([a.replace('$url$', u) for a in args])
+    mime = get_mime(url)
+    for line in config_line():
+        if re.search(line.regex, (mime if line.type == ConfigLineType.mime else url)) is not None:
+            subprocess.Popen(['notify-send', 'opening url', line.command])
+            subprocess.Popen(line.command.replace('$url$', url), shell=True)
             opened = True
             break
     if not opened:
-        subprocess.Popen(['notify-send', "URL didn't match ANY regex, was not opened", u])
+        subprocess.Popen(['notify-send', 'Opening with xdg-open', url])
+        subprocess.Popen(['xdg-open', url])
