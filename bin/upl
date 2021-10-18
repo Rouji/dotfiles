@@ -15,8 +15,8 @@ echo $RESP
 echo -n "$RESP" | xclip -selection clipboard
 echo -n "$RESP" | xclip -selection primary
 echo -n "$RESP" | wl-copy
+echo -n "$RESP" | qrencode -t ANSI -o -
 
 echo "$FILE" | grep -qi '\(png\|gif\|jpe\?g\|bmp\|webp\|tif\?f\)' && convert "$FILE" -thumbnail "${THUMB_SIZE}x${THUMB_SIZE}^" -gravity center -extent "${THUMB_SIZE}x${THUMB_SIZE}" "$THUMB_FILE" 2>/dev/null
-
 notify-send -i $THUMB_FILE 'upload' "$RESP"
 rm "$THUMB_FILE"
