@@ -15,4 +15,6 @@ export GDK_SCALE=1  # fix (mainly steam) gdk scale
 export QT_WEBENGINE_DISABLE_WAYLAND_WORKAROUND=1
 export _JAVA_AWT_WM_NONREPARENTING=1 # fix some java windows going blank
 
+eval $(ssh-agent)
+
 exec sway
