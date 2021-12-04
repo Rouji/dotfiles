@@ -68,7 +68,7 @@ PROMPT="%B%F{green}%B%F{blue}%~%f%b> "
 REPORTTIME=5
 
 #timeout for ESC etc.
-KEYTIMEOUT=10
+KEYTIMEOUT=1
 
 #prevent useless 'no matches found' error
 setopt nonomatch
