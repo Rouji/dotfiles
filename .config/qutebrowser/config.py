@@ -342,3 +342,5 @@ c.url.start_pages = 'https://start.duckduckgo.com/'
 # Bindings for normal mode
 config.bind(';e', 'spawn umpv {url}')
 config.bind('e', 'hint --rapid links spawn umpv {hint-url}')
+config.bind(';E', 'spawn yt-dlp -f best -o "~/Downloads/%(title)s-%(id)s.%(ext)s" {url}')
+config.bind('E', 'hint --rapid links spawn yt-dlp -f best -o "~/Downloads/%(title)s-%(id)s.%(ext)s" {hint-url}')
