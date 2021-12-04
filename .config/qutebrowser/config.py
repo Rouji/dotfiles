@@ -331,7 +331,9 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}',
         'am': 'https://www.amazon.de/s?k={}', 
         'gh': 'https://geizhals.at/?fs={}&in=', 
         'gith': 'https://github.com/search?utf8=%E2%9C%93&q={}&type=', 
-        'wh': 'https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={}'}
+        'wh': 'https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={}',
+        'alc': 'https://eow.alc.co.jp/search?q={}',
+}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
