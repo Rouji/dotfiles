@@ -20,7 +20,7 @@ tmux_tpm_update:
 pull:
 	git --git-dir=$(HOME)/.dotfiles/ --work-tree=$(HOME) pull --no-edit
 	git --git-dir=$(HOME)/.dotfiles/ --work-tree=$(HOME) submodule init
-	git --git-dir=$(HOME)/.dotfiles/ --work-tree=$(HOME) submodule update
+	git --git-dir=$(HOME)/.dotfiles/ --work-tree=$(HOME) submodule update --remote
 
 status_blocks:
 	make -C .status_blocks
