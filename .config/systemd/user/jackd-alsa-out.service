@@ -8,6 +8,7 @@ ExecStart=alsa_out -j jack2alsa -d ploop
 ExecStartPost=sleep 1
 ExecStartPost=jack_connect system:capture_1 jack2alsa:playback_1
 Restart=always
+RestartSec=3s
 
 [Install]
 WantedBy=default.target

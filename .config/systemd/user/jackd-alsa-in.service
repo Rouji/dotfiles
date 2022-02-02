@@ -9,6 +9,7 @@ ExecStartPost=sleep 1
 ExecStartPost=jack_connect alsa2jack:capture_1 system:playback_1
 ExecStartPost=jack_connect alsa2jack:capture_2 system:playback_2
 Restart=always
+RestartSec=3s
 
 [Install]
 WantedBy=default.target
