@@ -16,3 +16,6 @@
 [submodule ".gdb/gef"]
 	path = .gdb/gef
 	url = https://github.com/hugsy/gef.git
+[submodule ".config/mpv/scripts/mpv_sponsorblock_minimal"]
+	path = .config/mpv/scripts/mpv_sponsorblock_minimal
+	url = https://codeberg.org/jouni/mpv_sponsorblock_minimal.git
