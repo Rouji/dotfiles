@@ -3,8 +3,7 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec ~/bin/sway_session
 fi
 # start tmux
-tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$?
-command -v tmux>/dev/null; HAS_TMUX=$?
+tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$? command -v tmux>/dev/null; HAS_TMUX=$?
 if [[ $HAS_TMUX -eq 0 ]] && [[ $IS_TTY -ne 0 ]] && [[ ! $TERM =~ screen ]]; then
     if tmux ls | grep -qv attached; then
         exec tmux attach
@@ -38,7 +37,7 @@ setopt correctall
 
 HISTFILE=~/.zshhist
 HISTSIZE=500
-SAVEHIST=500000
+SAVEHIST=50000000
 setopt appendhistory sharehistory histignorespace
 
 #cd by typing only dirname, without "cd"
@@ -92,6 +91,11 @@ alias psg='ps aux | grep -i'
 
 #zmv alias
 alias mmv='noglob zmv -W'
+
+#grep history file
+function grep_history() { grep $@ ~/.zshhist }
+alias h='grep_history'
+alias hf='eval $(sort -u < ~/.zshhist | fzf)'
 
 #ls alias
 alias lll='ls -alhF'
