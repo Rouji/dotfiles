@@ -10,7 +10,7 @@ font pango:Terminus (TTF) 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty msg create-window || alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
