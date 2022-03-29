@@ -45,7 +45,7 @@ for url in urls:
     for line in config_line():
         if re.search(line.regex, (mime if line.type == ConfigLineType.mime else url)) is not None:
             subprocess.Popen(['notify-send', 'opening url', line.command])
-            subprocess.Popen(line.command.replace('$url$', url), shell=True)
+            subprocess.Popen(line.command.replace('$url$', url).split())
             opened = True
             break
     if not opened:
