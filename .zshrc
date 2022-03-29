@@ -3,7 +3,8 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec ~/bin/sway_session
 fi
 # start tmux
-tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$? command -v tmux>/dev/null; HAS_TMUX=$?
+tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$?
+command -v tmux>/dev/null; HAS_TMUX=$?
 if [[ $HAS_TMUX -eq 0 ]] && [[ $IS_TTY -ne 0 ]] && [[ ! $TERM =~ screen ]]; then
     if tmux ls | grep -qv attached; then
         exec tmux attach
