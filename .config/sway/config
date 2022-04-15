@@ -110,7 +110,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "swaynag -t warning -m '本当にログアウトしますか？' -b 'Yes' 'swaymsg exit'"
 
 # lock screen
-bindsym Control+$mod+l exec swaylock
+bindsym --release Control+$mod+l exec "swaylock -f -k -c 111111; sleep 1; killall -USR1 swayidle"
 
 # multimedia keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
