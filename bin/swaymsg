@@ -1,0 +1,23 @@
+#!/bin/sh
+SCRIPTPATH=$(dirname "$(realpath "$0")")
+PATH=$(echo "$PATH" | tr ":" "\n" | grep -v "$SCRIPTPATH" | xargs | tr " " ":")
+
+function sway() {
+    if [ -S "$SWAYSOCK" ]; then
+        PID=$(echo "$SWAYSOCK" | rev | cut -d'.' -f 2 | rev)
+        COMM=$(ps -p "$PID" -o comm=)
+        [ "$COMM" == "sway" ] && exec swaymsg "$@"
+    fi
+}
+
+sway "$@"
+
+echo "$SWAYSOCK didn't work" >/dev/stderr
+
+SOCKS=$(find /run/user/$UID -type s -name "sway-ipc.$UID.*.sock" 2>/dev/null)
+NUMSOCKS=$(echo $SOCKS | wc -l)
+[ "$NUMSOCKS" != "1" ] && echo "got $NUMSOCKS sway socket files instead of 1, refusing to do anything" && exit 1
+
+export SWAYSOCK=$SOCKS
+echo "trying $SWAYSOCK" >/dev/stderr
+sway "$@"
