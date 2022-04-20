@@ -19,7 +19,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec alacritty -t fzf_launch -e fzf_launch
 
 # open new browser window
-bindsym $mod+q exec --no-startup-id qb
+bindsym $mod+q exec firefox
 
 # open rofi keepass thingy
 bindsym $mod+Ctrl+k exec keepmenu
