@@ -133,6 +133,12 @@ bindsym $mod+t exec touchpad_toggle
 # ext. display toggle
 bindsym XF86Display exec  ~/.screenlayout/auto.sh
 
+# pass through all input
+mode "passthrough" {
+    bindsym $mod+Insert mode "default"
+}
+bindsym $mod+Insert mode "passthrough"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
