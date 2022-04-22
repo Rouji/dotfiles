@@ -16,7 +16,7 @@ bindsym $mod+Return exec alacritty msg create-window || alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec alacritty -t fzf_launch -e fzf_launch
+bindsym $mod+d exec wofi
 
 # open new browser window
 bindsym $mod+q exec firefox
