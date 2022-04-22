@@ -189,7 +189,12 @@ input type:keyboard {
     repeat_rate 50
 }
 
-for_window [title="^fzf_launch$"] floating enable
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    scroll_factor 0.3
+}
+
 
 exec mako
 exec swayidle timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
