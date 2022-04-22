@@ -21,9 +21,6 @@ bindsym $mod+d exec wofi
 # open new browser window
 bindsym $mod+q exec firefox
 
-# open rofi keepass thingy
-bindsym $mod+Ctrl+k exec keepmenu
-
 bindsym --release $mod+Print exec screenshotupload
 
 # shorten URL in clipboard
@@ -103,35 +100,25 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r reload
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "swaynag -t warning -m '本当にログアウトしますか？' -b 'Yes' 'swaymsg exit'"
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'log out?' -b 'Yes' 'swaymsg exit'"
 
 # lock screen
-bindsym --release Control+$mod+l exec "swaylock -f -k -c 111111; sleep 1; killall -USR1 swayidle"
+bindsym --release Control+$mod+l exec "swaylock -f -k -c 000000; sleep 1; killall -USR1 swayidle"
 
 # multimedia keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec pamixer --allow-boost -ui 2 && dc -e "[`pamixer --get-volume`]sM 100d `pamixer --get-volume`<Mp" > $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec pamixer --allow-boost -ud 2 && dc -e "[`pamixer --get-volume`]sM 100d `pamixer --get-volume`<Mp" > $SWAYSOCK.wob
+bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob )
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-bindsym $mod+period exec xbacklight -inc 10 # increase screen brightness
-bindsym $mod+comma exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl -q set +5% && ( echo $((`brightnessctl get` * 100 / `brightnessctl m`)) > $SWAYSOCK.wob )
+bindsym XF86MonBrightnessDown exec brightnessctl -q set 5%- && ( echo $((`brightnessctl get` * 100 / `brightnessctl m`)) > $SWAYSOCK.wob )
 
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-# touchpad toggle
-bindsym $mod+t exec touchpad_toggle
-
-# ext. display toggle
-bindsym XF86Display exec  ~/.screenlayout/auto.sh
 
 # pass through all input
 mode "passthrough" {
