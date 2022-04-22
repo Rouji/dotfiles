@@ -3,7 +3,7 @@
     "height": 20, // Waybar height (to be removed for auto height)
     "modules-left": ["sway/workspaces", "tray", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["network", "idle_inhibitor", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "clock"],
+    "modules-right": ["idle_inhibitor", "network", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "clock"],
     "sway/mode": {
         "format": " {}"
     },
@@ -75,11 +75,16 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-linked": "",
-        "format-disconnected": "⚠",
-        "format-alt": "{ifname} {essid} ({signalStrength}%)"
+        "interface": "enp30s0",
+        "format": "↑{bandwidthUpBits} ↓{bandwidthDownBits} {icon}",
+        "format-icons": {
+            "wifi": "",
+            "ethernet": "",
+            "linked": "",
+            "disconnected": "⚠",
+        },
+        "format-alt": "{ifname} {essid} ({signalStrength}%)",
+        "interval": 5
     },
     "pulseaudio": {
         "format": "{volume} {icon}",
