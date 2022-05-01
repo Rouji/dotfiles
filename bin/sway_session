@@ -5,15 +5,19 @@ export XIM=fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export GDK_BACKEND=wayland
-export CLUTTER_BACKEND=wayland
-export XDG_SESSION_TYPE=wayland
+
+export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland-egl
+export CLUTTER_BACKEND=wayland
+export ECORE_EVAS_ENGINE=wayland-egl
+export ELM_ENGINE=wayland_egl
 export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+export NO_AT_BRIDGE=1
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-export GDK_SCALE=1  # fix (mainly steam) gdk scale
 export QT_WEBENGINE_DISABLE_WAYLAND_WORKAROUND=1
-export _JAVA_AWT_WM_NONREPARENTING=1 # fix some java windows going blank
+
+QT_QPA_PLATFORMTHEME=qt5ct
 
 eval $(ssh-agent)
 

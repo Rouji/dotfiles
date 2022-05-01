@@ -81,19 +81,19 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: "xos4 Terminess Powerline" # should be "Menlo" or something on macOS.
+    family: "Monaco" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: "xos4 Terminess Powerline" # should be "Menlo" or something on macOS.
+    family: "Monaco" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: "xos4 Terminess Powerline" # should be "Menlo" or something on macOS.
+    family: "Monaco" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Italic
 

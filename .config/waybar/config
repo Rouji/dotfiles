@@ -75,7 +75,6 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "interface": "enp30s0",
         "format": "↑{bandwidthUpBits} ↓{bandwidthDownBits} {icon}",
         "format-icons": {
             "wifi": "",
