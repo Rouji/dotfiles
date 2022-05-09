@@ -38,6 +38,10 @@ window#waybar.solo {
     color: rgba(33, 164, 223, 1);
 }
 
+#mode {
+    color: #d62b1b;
+}
+
 #mode, 
 #battery, 
 #cpu, 
