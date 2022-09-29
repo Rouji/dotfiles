@@ -33,3 +33,5 @@ o.mouse = 'a'
 
 o.foldmethod = 'indent'
 o.foldlevel = 99
+
+o.completeopt = {'menu','menuone','noselect'}
