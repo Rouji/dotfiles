@@ -49,6 +49,9 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
+# toggle focused window sticky
+bindsym $mod+s sticky toggle
+
 # split in horizontal orientation
 bindsym $mod+b split h
 
