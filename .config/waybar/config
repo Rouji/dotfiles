@@ -3,7 +3,7 @@
     "height": 20,
     "modules-left": ["sway/workspaces", "tray", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "network", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "clock"],
+    "modules-right": ["idle_inhibitor", "custom/governor", "network", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "clock"],
     "sway/mode": {
         "format": " {}"
     },
@@ -101,5 +101,10 @@
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
         "tooltip": false
+    },
+    "custom/governor": {
+        "exec": "while true; do cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor; inotifywait -e close_write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null; done",
+        "exec-on-event": false,
+        "on-click": "rotate_gov"
     }
 }
