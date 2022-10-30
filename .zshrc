@@ -151,6 +151,8 @@ alias j='noglob jm'
 
 alias t='date -Im'
 
+alias cp='cp --reflink=auto'
+
 if [[ $IS_TTY -ne 0 ]]; then
     source ~/.zsh/powerline-prompt.zsh
 fi
