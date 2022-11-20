@@ -6,24 +6,12 @@
     box-shadow:    none;
     text-shadow:   none;
     transition-duration: 0s;
+    padding: 0;
 }
 
 window#waybar {
     color: #999;
     background-color: black;
-}
-
-window#waybar.solo {
-    color: #999;
-}
-
-#workspaces {
-    margin: 0 5px;
-}
-
-#workspaces button {
-    padding: 0 5px;
-    color: #999;
 }
 
 #workspaces button.focused {
@@ -39,9 +27,10 @@ window#waybar.solo {
 }
 
 #mode {
-    color: #d62b1b;
+    color: rgba(115, 186, 37, 1);
 }
 
+#workspaces button, 
 #mode, 
 #battery, 
 #cpu, 
@@ -51,12 +40,14 @@ window#waybar.solo {
 #idle_inhibitor, 
 #temperature,
 #custom-layout,
+#custom-governor,
 #backlight {
-    margin: 0px 6px 0px 10px;
+    color: #999;
+    margin: 0px 5px;
 }
 
 #clock {
-    margin: 0px 6px 0px 10px;
+    margin: 0px 5px;
 }
 
 #battery.warning {
