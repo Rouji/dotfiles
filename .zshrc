@@ -5,7 +5,7 @@ fi
 # start tmux
 tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$?
 command -v tmux>/dev/null; HAS_TMUX=$?
-if [[ $HAS_TMUX -eq 0 ]] && [[ $IS_TTY -ne 0 ]] && [[ ! $TERM =~ screen ]]; then
+if [[ $HAS_TMUX -eq 0 ]] && [[ $IS_TTY -ne 0 ]] && [[ -z $TMUX ]]; then
     if tmux ls | grep -qv attached; then
         exec tmux attach
     else
@@ -160,6 +160,33 @@ fi
 HIGH=~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if [[ -f "$HIGH" ]]; then
     typeset -A ZSH_HIGHLIGHT_STYLES
-    ZSH_HIGHLIGHT_STYLES[path]='none'
+    ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+    ZSH_HIGHLIGHT_DIRS_BLACKLIST+=(/nfs)
     source "$HIGH"
 fi
+
+FZF_COMP=~/.zsh/fzf/completion.zsh
+if [[ -f "$FZF_COMP" ]]; then
+    source $FZF_COMP
+fi
+FZF_KEYS=~/.zsh/fzf/key-bindings.zsh
+if [[ -f "$FZF_KEYS" ]]; then
+    source $FZF_KEYS
+fi
+
+function autoenv() {
+    if [[ -z "$VIRTUAL_ENV" ]] ; then
+        [[ -d .venv ]] && source .venv/bin/activate
+    else
+        parentdir="$(dirname "$VIRTUAL_ENV")"
+        if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+            deactivate
+        fi
+    fi
+}
+
+function chpwd() {
+    autoenv
+}
+
+autoenv
