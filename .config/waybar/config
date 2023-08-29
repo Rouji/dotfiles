@@ -1,112 +1,134 @@
 {
     "layer": "bottom",
-    "height": 20,
-    "modules-left": ["sway/workspaces", "tray", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "custom/governor", "network", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "clock"],
-    "sway/mode": {
-        "format": " {}"
-    },
-    "sway/window": {
-        "max-length": 80,
-        "tooltip": false
-    },
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": false,
-        "format": "{name}: {icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
+        "height": 20,
+        "output": "!HEADLESS-1",
+        "modules-left": ["sway/workspaces", "tray", "sway/mode"],
+        "modules-center": ["sway/window"],
+        "modules-right": ["custom/governor", "network", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "idle_inhibitor", "custom/notification", "clock"],
+        "sway/mode": {
+            "format": " {}"
+        },
+        "sway/window": {
+            "max-length": 80,
+            "tooltip": false
+        },
+        "sway/workspaces": {
+            "disable-scroll": true,
+            "all-outputs": true,
+            "format": "{name}: {icon}",
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "urgent": "",
+                "focused": "",
+                "default": ""
+            }
+        },
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
+            }
+        },
+        "tray": {
+            // "icon-size": 21,
+            "spacing": 10
+        },
+        "clock": {
+            "format": "{:%a %d %b %H:%M}",
+            "tooltip": false
+        },
+        "cpu": {
+            "format": "{usage}% ",
+            "tooltip": false
+        },
+        "memory": {
+            "format": "{}% "
+        },
+        "temperature": {
+            // "thermal-zone": 2,
+            // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+            "critical-threshold": 80,
+            // "format-critical": "{temperatureC}°C {icon}",
+            "format": "{temperatureC}°C {icon}",
+            "format-icons": ["", "", ""]
+        },
+        "backlight": {
+            // "device": "acpi_video1",
+            "format": "{percent}% {icon}",
+            "format-icons": ["", ""],
+            "on-scroll-down": "brightnessctl -q set 2%-",
+            "on-scroll-up": "brightnessctl -q set +2%"
+        },
+        "battery": {
+            "states": {
+                "good": 95,
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{capacity}% {icon}",
+            "format-charging": "{capacity}% ",
+            "format-plugged": "{capacity}% ",
+            "format-alt": "{capacity}% {time}",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "network": {
+            // "interface": "wlp2*", // (Optional) To force the use of this interface
+            "format": "↑{bandwidthUpBits} ↓{bandwidthDownBits} {icon}",
+            "format-icons": {
+                "wifi": "",
+                "ethernet": "",
+                "linked": "",
+                "disconnected": "⚠"
+            },
+            "format-alt": "{ifname} {essid} ({signalStrength}%)",
+            "interval": 5
+        },
+        "pulseaudio": {
+            "format": "{volume} {icon}",
+            "format-muted": "",
+            "format-icons": {
+                "headphones": "",
+                "handsfree": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "scroll-step": 5,
+            "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+            "on-click-right": "pavucontrol",
+            "tooltip": false
+        },
+        "custom/governor": {
+            "format": "gov: {}",
+            "exec": "while true; do cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor || sleep 1; inotifywait -e close_write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null; done",
+            "exec-on-event": false,
+            "on-click": "rotate_gov"
+        },
+        "custom/notification": {
+            "tooltip": false,
+            "format": "{icon}",
+            "format-icons": {
+                "notification": "<span foreground='green'></span>",
+                "none": "",
+                "dnd-notification": "<span foreground='green'></span>",
+                "dnd-none": "",
+                "inhibited-notification": "<span foreground='green'></span>",
+                "inhibited-none": "",
+                "dnd-inhibited-notification": "<span foreground='green'></span>",
+                "dnd-inhibited-none": ""
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "on-click-right": "swaync-client -d -sw",
+            "escape": true
         }
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        } 
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        "format": "{:%a %d %b %H:%M}",
-        "tooltip": false
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", ""],
-        "on-scroll-down": "brightnessctl -q set 2%-",
-        "on-scroll-up": "brightnessctl -q set +2%"
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{capacity}% {time}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format": "↑{bandwidthUpBits} ↓{bandwidthDownBits} {icon}",
-        "format-icons": {
-            "wifi": "",
-            "ethernet": "",
-            "linked": "",
-            "disconnected": "⚠",
-        },
-        "format-alt": "{ifname} {essid} ({signalStrength}%)",
-        "interval": 5
-    },
-    "pulseaudio": {
-        "format": "{volume} {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "scroll-step": 5,
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-click-right": "pavucontrol",
-        "tooltip": false
-    },
-    "custom/governor": {
-        "exec": "while true; do cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor; inotifywait -e close_write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null; done",
-        "exec-on-event": false,
-        "on-click": "rotate_gov"
-    }
 }
