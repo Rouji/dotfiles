@@ -8,4 +8,4 @@ export LANG=ja_JP.utf8
 export MAKEFLAGS="j`nproc`"
 export DXVK_HUD=fps
 export MOSH_PREDICTION_DISPLAY="experimental"
-
+export SSH_ASKPASS="$HOME/bin/ssh-askpass"
