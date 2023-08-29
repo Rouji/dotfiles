@@ -1,0 +1,10 @@
+dbus-user filter
+dbus-user.talk org.freedesktop.portal.Fcitx
+dbus-user.talk org.freedesktop.Notifications
+dbus-user.talk org.freedesktop.ScreenSaver
+dbus-user.talk org.freedesktop.portal.Desktop
+ignore dbus-user none
+
+noblacklist ${RUNUSER}/app
+mkdir ${RUNUSER}/app/org.keepassxc.KeePassXC
+whitelist ${RUNUSER}/app/org.keepassxc.KeePassXC
