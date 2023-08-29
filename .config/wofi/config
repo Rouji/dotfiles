@@ -1,4 +1,5 @@
 width=800
 height=400
 insensitive=true
-mode=drun,run
+mode=run
+run-show_all=false
