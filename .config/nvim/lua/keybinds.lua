@@ -14,3 +14,4 @@ k('n', '<space>', 'za') -- fold using space
 k('n', '<C-c>', ':bp|bd #<CR>') -- close buiffer without closing window
 
 k('v', '<C-r>', '"hy:%s/<C-r>h//g<left><left>') -- ctrl-R in visual mode to replace in whole file
+k('v', '<C-g>', ':ChatGPTRun complete_code')
