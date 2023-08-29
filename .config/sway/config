@@ -4,7 +4,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Monaco 8
+font pango:Source Sans Pro 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -16,12 +16,13 @@ bindsym $mod+Return exec alacritty msg create-window || alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec wofi
+bindsym $mod+d exec wofi --show run
 
 # open new browser window
 bindsym $mod+q exec firefox
 
-bindsym --release $mod+Print exec screenshotupload
+bindsym Print exec screenshot
+bindsym $mod+Print exec screenshotupload
 
 # shorten URL in clipboard
 bindsym $mod+u exec curl -F "url=$(wl-paste -n)" https://s.x0.at/ | wl-copy && notify-send 'url shortened' "$(wl-paste)"
@@ -150,8 +151,8 @@ mode "resize" {
 # shutdown mode
 mode  "(s)leep (h)ibernate (r)estart shut(d)own" {
 
-        bindsym s exec swaylock -c 000000; exec systemctl suspend; mode "default"
-        bindsym h exec swaylock -c 000000; exec systemctl hibernate; mode "default"
+        bindsym s exec swaylock -c 000000 --indicator-idle-visible; exec systemctl suspend; mode "default"
+        bindsym h exec swaylock -c 000000 --indicator-idle-visible; exec systemctl hibernate; mode "default"
         bindsym d exec systemctl poweroff; mode "default"
         bindsym r exec systemctl reboot; mode "default"
 
@@ -177,14 +178,18 @@ bar {
     swaybar_command waybar
 }
 
-#rename workspace
-bindsym $mod+Shift+s exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+# open notification panel
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
 #disable titlebars
 for_window [class="^.*"] pixel 2
 default_border pixel 2
 default_floating_border pixel 2
 smart_borders on
+
+floating_minimum_size 1 x 1
+
+for_window [title='ssh-askpass'] floating enable
 
 input type:keyboard {
     xkb_options compose:ralt
@@ -198,21 +203,29 @@ input type:touchpad {
     scroll_factor 0.3
 }
 
+input "43256:6194:Bastard_Keyboards_Charybdis_Nano_(3x5)_Splinky_Mouse" {
+    natural_scroll enabled
+    middle_emulation enabled
+    scroll_button 275
+    scroll_method on_button_down
+    accel_profile flat
+    pointer_accel -0.7
+    scroll_factor 0.3
+}
+
+
 exec_always {
     systemctl --user import-environment
-    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
     test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
     tail -f $SWAYSOCK.wob | wob
 }
 
-exec fcitx-autostart
-exec mako
+exec fcitx5
+exec swaync
 exec swayidle -w \
         timeout 300 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
-        timeout 360 'swaylock -f -c 000000' \
-        before-sleep 'swaylock -f -c 000000'
+        timeout 360 'swaylock -f -c 000000 --indicator-idle-visible' \
+        before-sleep 'swaylock -f -c 000000 --indicator-idle-visible'
 
 include config.d/*
