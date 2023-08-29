@@ -5,7 +5,7 @@ export XIM=fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-
+export XCURSOR_THEME=Adwaita
 export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland-egl
 export CLUTTER_BACKEND=wayland
@@ -19,6 +19,7 @@ export QT_WEBENGINE_DISABLE_WAYLAND_WORKAROUND=1
 
 QT_QPA_PLATFORMTHEME=qt5ct
 
-eval $(ssh-agent)
+eval $(DISPLAY=:0 ssh-agent)
 
+export WLR_RENDERER=vulkan
 exec sway
