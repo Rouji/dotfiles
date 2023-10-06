@@ -9,4 +9,3 @@ colorscheme gruvbox
 highlight VertSplit ctermbg=NONE
 "highlight Normal guibg=NONE ctermbg=NONE
 ]])
-
