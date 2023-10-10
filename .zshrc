@@ -129,6 +129,8 @@ alias px='xclip -o'
 
 alias killf='ps --no-headers aux | fzf -m | awk "{print \$2}" | xargs -r kill'
 
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+
 #(n)vim alias
 export EDITOR=vi
 if type "vim" >/dev/null; then
