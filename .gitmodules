@@ -16,3 +16,6 @@
 [submodule ".config/mpv/scripts/mpv_sponsorblock_minimal"]
 	path = .config/mpv/scripts/mpv_sponsorblock_minimal
 	url = https://codeberg.org/jouni/mpv_sponsorblock_minimal.git
+[submodule ".zsh/fzf"]
+	path = .zsh/fzf
+	url = https://github.com/unixorn/fzf-zsh-plugin.git
