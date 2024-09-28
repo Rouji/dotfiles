@@ -1,5 +1,8 @@
 umask 077
 
+if [ -d "$HOME/.local/share/flatpak/exports/bin" ] ; then
+    PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
+fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
