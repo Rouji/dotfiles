@@ -126,9 +126,9 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # pass through all input
 mode "passthrough" {
-    bindsym $mod+Insert mode "default"
+    bindsym $mod+t mode "default"
 }
-bindsym $mod+Insert mode "passthrough"
+bindsym $mod+t mode "passthrough"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
