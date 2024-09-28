@@ -1,6 +1,6 @@
 [Service]
 Description=automounter
-ExecStart=udiskie -an
+ExecStart=udiskie -ant
 Restart=always
 
 [Install]
