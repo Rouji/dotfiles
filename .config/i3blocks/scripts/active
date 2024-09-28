@@ -1,2 +1,0 @@
-#!/bin/bash
-active_window_name || echo -n ''

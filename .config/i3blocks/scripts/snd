@@ -1,7 +1,0 @@
-#!/bin/sh
-PROGS=$(fuser -v /dev/snd/* 2>&1 | awk 'NF>1{print $NF}' | tail -n +2 | sort -u | tr '\n' ',' | sed '$s/.$//')
-if [ -z "$PROGS" ]; then
-    echo "snd: none"
-else
-    echo "snd: $PROGS"
-fi
