@@ -50,6 +50,8 @@ require('packer').startup(function(use)
        requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    use 'github/copilot.vim'
+
     use 'lewis6991/impatient.nvim'
     if packer_bootstrap then
         require('packer').sync()
