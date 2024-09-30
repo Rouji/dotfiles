@@ -178,12 +178,6 @@ bar {
     swaybar_command waybar
 }
 
-# pass through all input
-mode "passthrough" {
-    bindsym $mod+t mode "default"
-}
-bindsym $mod+t mode "passthrough"
- 
 # open notification panel
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
@@ -196,6 +190,8 @@ smart_borders on
 floating_minimum_size 1 x 1
 
 for_window [title='ssh-askpass'] floating enable
+
+for_window [app_id="mpv"] floating enable
 
 input type:keyboard {
     xkb_options compose:ralt
