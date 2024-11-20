@@ -13,3 +13,5 @@ whitelist ${HOME}/Screenshots
 read-only ${HOME}/Screenshots
 
 ignore noexec ${HOME}
+
+include whitelist-runuser-common.inc
