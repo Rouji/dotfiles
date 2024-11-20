@@ -230,4 +230,6 @@ exec swayidle -w \
         timeout 360 'swaylock -f -c 000000 --indicator-idle-visible' \
         before-sleep 'swaylock -f -c 000000 --indicator-idle-visible'
 
+exec kanshi
+
 include config.d/*
