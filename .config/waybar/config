@@ -2,7 +2,6 @@
     "ipc": true,
     "layer": "bottom",
         "height": 20,
-        "output": "!HEADLESS-1",
         "modules-left": ["sway/workspaces", "tray", "sway/mode"],
         "modules-center": ["sway/window"],
         "modules-right": ["custom/theme", "network", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "idle_inhibitor", "custom/notification", "clock"],
@@ -15,7 +14,7 @@
         },
         "sway/workspaces": {
             "disable-scroll": true,
-            "all-outputs": false,
+            "all-outputs": true,
             "format": "{name}: {icon}",
             "format-icons": {
                 "1": "",

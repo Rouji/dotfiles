@@ -148,19 +148,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# shutdown mode
-mode  "(s)leep (h)ibernate (r)estart shut(d)own" {
-
-        bindsym s exec swaylock -c 000000; exec systemctl suspend; mode "default"
-        bindsym h exec swaylock -c 000000; exec systemctl hibernate; mode "default"
-        bindsym d exec systemctl poweroff; mode "default"
-        bindsym r exec systemctl reboot; mode "default"
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-bindsym $mod+n mode "(s)leep (h)ibernate (r)estart shut(d)own"
-
 # resize mode
 bindsym $mod+r mode "resize"
 
@@ -219,6 +206,9 @@ input "43256:6194:Bastard_Keyboards_Charybdis_Nano_(3x5)_Splinky_Mouse" {
     scroll_factor 0.3
 }
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway; \
+    systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr; \
+    systemctl --user start wireplumber
 
 exec_always {
     systemctl --user import-environment
@@ -229,12 +219,6 @@ exec_always {
 output * subpixel none
 
 exec fcitx5
-exec swaync
-exec swayidle -w \
-        timeout 300 'swaymsg "output eDP-1 dpms off"' \
-        resume 'swaymsg "output eDP-1 dpms on"' \
-        timeout 360 'swaylock -f -c 000000' \
-        before-sleep 'swaylock -f -c 000000'
 
 exec kanshi
 exec systemctl --user restart udiskie

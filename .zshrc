@@ -39,7 +39,9 @@ setopt correctall
 HISTFILE=~/.zshhist
 HISTSIZE=500
 SAVEHIST=50000000
-setopt appendhistory sharehistory histignorespace
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_SPACE
 
 #cd by typing only dirname, without "cd"
 setopt auto_cd
@@ -167,14 +169,7 @@ if [[ -f "$HIGH" ]]; then
     source "$HIGH"
 fi
 
-FZF_COMP=~/.zsh/fzf/completion.zsh
-if [[ -f "$FZF_COMP" ]]; then
-    source $FZF_COMP
-fi
-FZF_KEYS=~/.zsh/fzf/key-bindings.zsh
-if [[ -f "$FZF_KEYS" ]]; then
-    source $FZF_KEYS
-fi
+command -v fzf>/dev/null && source <(fzf --zsh) 
 
 function autoenv() {
     if [[ -z "$VIRTUAL_ENV" ]] ; then

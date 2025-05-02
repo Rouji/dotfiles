@@ -17,11 +17,19 @@ export NO_AT_BRIDGE=1
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=0
 export QT_WEBENGINE_DISABLE_WAYLAND_WORKAROUND=1
 export GDK_SCALE=1
+export XDG_CURRENT_DESKTOP=sway
 
 export QT_QPA_PLATFORMTHEME=qt6ct
 export XDG_CURRENT_DESKTOP=sway
 
+#export WLR_RENDERER=vulkan
+>>>>>>> Stashed changes
+
 eval $(DISPLAY=:0 ssh-agent)
 
+<<<<<<< HEAD
 export WLR_RENDERER=vulkan
 exec sway
+=======
+exec dbus-launch sway "$@"
+>>>>>>> 4315968 (blah)

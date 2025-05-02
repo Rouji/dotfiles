@@ -22,6 +22,14 @@ require('packer').startup(function(use)
     use 'nvim-lua/plenary.nvim'
     use 'lewis6991/gitsigns.nvim'
 
+    use({
+      "andythigpen/nvim-coverage",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("coverage").setup({commands=true,})
+      end,
+    })
+
     use {
         'hoob3rt/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -44,6 +52,8 @@ require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},
         }
     }
+
+    use 'nvimtools/none-ls.nvim'
 
     use {
       'nvim-telescope/telescope.nvim', tag = '0.1.3',

@@ -12,7 +12,18 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("n", "<leader>s", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("n", "<leader>r", function() require('telescope.builtin').lsp_references() end, opts)
 end)
+
+lsp.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['null-ls'] = {'python', 'typescript', 'lua'},
+  }
+})
 
 lsp.setup()
 
@@ -38,4 +49,15 @@ require('mason-lspconfig').setup({
     handlers = {
       lsp.default_setup,
     },
+})
+
+require('lspconfig').ansiblels.setup({
+    filetypes={"yaml",}
+})
+
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.black,
+    }
 })
