@@ -1,43 +1,19 @@
 [general]
 live_config_reload = true
+import = [
+    "~/.config/alacritty/themes/themes/ayu_light.toml",
+]
 
 [bell]
 animation = "EaseOutExpo"
 duration = 0
-
-[colors]
-draw_bold_text_with_bright_colors = true
-
-[colors.bright]
-black = "0x7f7f7f"
-blue = "0x5c5cff"
-cyan = "0x00ffff"
-green = "0x00ff00"
-magenta = "0xff00ff"
-red = "0xff0000"
-white = "0xffffff"
-yellow = "0xffff00"
-
-[colors.normal]
-black = "0x000000"
-blue = "0x7aa6da"
-cyan = "0x00cdcd"
-green = "0x00cd00"
-magenta = "0xcd00cd"
-red = "0xcd0000"
-white = "0xe5e5e5"
-yellow = "0xcdcd00"
-
-[colors.primary]
-background = "0x000000"
-foreground = "0xffffff"
 
 [cursor]
 style = "Block"
 unfocused_hollow = true
 
 [font]
-size = 9.0
+size = 12.0
 
 [font.bold]
 family = "Terminus (TTF)"

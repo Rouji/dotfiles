@@ -12,6 +12,8 @@ whitelist ${RUNUSER}/app/org.keepassxc.KeePassXC
 whitelist ${HOME}/Screenshots
 read-only ${HOME}/Screenshots
 
+whitelist ${HOME}/tmp
+
 ignore noexec ${HOME}
 
 include whitelist-runuser-common.inc

@@ -4,7 +4,7 @@
         "output": "!HEADLESS-1",
         "modules-left": ["sway/workspaces", "tray", "sway/mode"],
         "modules-center": ["sway/window"],
-        "modules-right": ["custom/governor", "network", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "idle_inhibitor", "custom/notification", "clock"],
+        "modules-right": ["custom/theme", "network", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "idle_inhibitor", "custom/notification", "clock"],
         "sway/mode": {
             "format": " {}"
         },
@@ -130,5 +130,10 @@
             "on-click": "swaync-client -t -sw",
             "on-click-right": "swaync-client -d -sw",
             "escape": true
-        }
+        },
+        "custom/theme": {
+            "format": "theme",
+            "exec-on-event": false,
+            "on-click": "darkman toggle"
+        },
 }
