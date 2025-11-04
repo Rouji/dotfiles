@@ -151,8 +151,8 @@ mode "resize" {
 # shutdown mode
 mode  "(s)leep (h)ibernate (r)estart shut(d)own" {
 
-        bindsym s exec swaylock -c 000000 --indicator-idle-visible; exec systemctl suspend; mode "default"
-        bindsym h exec swaylock -c 000000 --indicator-idle-visible; exec systemctl hibernate; mode "default"
+        bindsym s exec swaylock -c 000000; exec systemctl suspend; mode "default"
+        bindsym h exec swaylock -c 000000; exec systemctl hibernate; mode "default"
         bindsym d exec systemctl poweroff; mode "default"
         bindsym r exec systemctl reboot; mode "default"
 
@@ -195,7 +195,6 @@ floating_minimum_size 1 x 1
 
 for_window [title='ssh-askpass'] floating enable
 
-for_window [app_id="mpv"] floating enable
 
 input type:keyboard {
     xkb_options compose:ralt
@@ -207,6 +206,7 @@ input type:touchpad {
     tap enabled
     natural_scroll enabled
     scroll_factor 0.3
+    drag_lock disabled
 }
 
 input "43256:6194:Bastard_Keyboards_Charybdis_Nano_(3x5)_Splinky_Mouse" {
@@ -226,14 +226,21 @@ exec_always {
     tail -f $SWAYSOCK.wob | wob
 }
 
+output * subpixel none
+
 exec fcitx5
 exec swaync
 exec swayidle -w \
-        timeout 300 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
-        timeout 360 'swaylock -f -c 000000 --indicator-idle-visible' \
-        before-sleep 'swaylock -f -c 000000 --indicator-idle-visible'
+        timeout 300 'swaymsg "output eDP-1 dpms off"' \
+        resume 'swaymsg "output eDP-1 dpms on"' \
+        timeout 360 'swaylock -f -c 000000' \
+        before-sleep 'swaylock -f -c 000000'
 
 exec kanshi
+exec systemctl --user restart udiskie
+
+exec_always {
+    kanshictl reload
+}
 
 include config.d/*
