@@ -176,6 +176,10 @@ client.focused_inactive #000000 #000000 #666666 #000000 #000000
 # finds out, if available)
 bar {
     swaybar_command waybar
+    position top
+    hidden_state hide
+    mode hide
+    modifier $mod
 }
 
 # open notification panel
