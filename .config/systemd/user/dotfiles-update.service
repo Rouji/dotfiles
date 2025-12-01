@@ -1,8 +1,0 @@
-[Service]
-Description=update dotfiles
-WorkingDirectory=%h
-ExecStart=make update
-
-[Install]
-WantedBy=default.target
-
