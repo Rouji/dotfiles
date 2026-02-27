@@ -7,7 +7,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export XCURSOR_THEME=Adwaita
 export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM=wayland-egl
+export QT_QPA_PLATFORM=wayland
 export CLUTTER_BACKEND=wayland
 export ECORE_EVAS_ENGINE=wayland-egl
 export ELM_ENGINE=wayland_egl
@@ -23,7 +23,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 export XDG_CURRENT_DESKTOP=sway
 
 #export WLR_RENDERER=vulkan
->>>>>>> Stashed changes
 
 eval $(DISPLAY=:0 ssh-agent)
 
