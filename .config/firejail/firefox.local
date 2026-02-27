@@ -12,7 +12,15 @@ whitelist ${RUNUSER}/app/org.keepassxc.KeePassXC
 whitelist ${HOME}/Screenshots
 read-only ${HOME}/Screenshots
 
+whitelist ${HOME}/smartphone_movies
+read-only ${HOME}/smartphone_movies
+whitelist ${HOME}/smartphone_dcim
+read-only ${HOME}/smartphone_dcim
+whitelist ${HOME}/smartphone_pictures
+read-only ${HOME}/smartphone_pictures
+
 whitelist ${HOME}/tmp
+whitelist /etc/resolv.conf
 
 ignore noexec ${HOME}
 
