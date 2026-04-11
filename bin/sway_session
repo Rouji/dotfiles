@@ -18,11 +18,12 @@ export QT_WAYLAND_DISABLE_WINDOWDECORATION=0
 export QT_WEBENGINE_DISABLE_WAYLAND_WORKAROUND=1
 export GDK_SCALE=1
 export XDG_CURRENT_DESKTOP=sway
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 export QT_QPA_PLATFORMTHEME=qt6ct
 export XDG_CURRENT_DESKTOP=sway
 
-eval $(DISPLAY=:0 ssh-agent)
-
 export WLR_RENDERER=vulkan
-exec dbus-launch sway "$@"
+
+#exec dbus-run-session sway "$@"
+exec systemd-run --user --scope sway "$@"

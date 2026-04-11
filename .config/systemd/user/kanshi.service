@@ -4,10 +4,8 @@ After=sway-session.target
 Requisite=sway-session.target
 
 [Service]
-Description=automounter
-ExecStart=udiskie -an -F --no-terminal --appindicator
+ExecStart=kanshi
 Restart=always
 
 [Install]
 WantedBy=sway-session.target
-
