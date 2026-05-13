@@ -1,0 +1,3 @@
+#!/bin/sh
+BIN=/usr/bin/opencode
+firejail --profile=opencode --whitelist=$PWD $BIN
