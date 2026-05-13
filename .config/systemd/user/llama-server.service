@@ -1,0 +1,20 @@
+[Unit]
+Description=llama.cpp server
+
+[Service]
+Type=simple
+ExecStart=%h/bin/llama-server \
+    --models-dir %h/tmp/gguf \
+    -ngl 99 \
+    -t 16 \
+    --jinja \
+    -fa on \
+    --sleep-idle-seconds 300 \
+    --no-warmup \
+    --models-max 1 \
+    --timeout 60000
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
