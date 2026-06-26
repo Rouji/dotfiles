@@ -1,9 +1,6 @@
 # FireJail profile for OpenCode
-# Place this file in ~/.config/firejail/opencode.profile
-
+noblacklist ~/.kube
 include /etc/firejail/disable-common.inc
-#include /etc/firejail/disable-programs.inc
-#include /etc/firejail/disable-devel.inc
 #include /etc/firejail/disable-interpreters.inc
 
 caps.drop all
@@ -18,9 +15,11 @@ novideo
 seccomp
 
 # Allow necessary directories
-whitelist ~/.opencode
 whitelist ~/.local/share/opencode
 whitelist ~/.cache
-whitelist ~/.config
+whitelist ~/.config/opencode
+read-write ~/.config/opencode
+whitelist ~/.kube
+read-only ~/.kube
 whitelist ~/.npm
-
+read-write ~/.npm
