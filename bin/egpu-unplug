@@ -1,0 +1,27 @@
+#!/bin/bash
+# eGPU is Navi 22 (1002:73DF), iGPU is HawkPoint2 (1002:1901)
+# Find the GPU with the Navi 22 ID
+EGPU=$(lspci -nn 2>/dev/null | grep -E "1002:73df" | grep -oP '^\S+' || true)
+
+if [ -z "$EGPU" ]; then
+    echo "eGPU not found"
+    exit 1
+fi
+
+EGPU_PCI="0000:$EGPU"
+
+# Verify it's not the iGPU (c5:00.0)
+if [[ "$EGPU" == c5* ]]; then
+    echo "ERROR: This is your internal GPU! Aborting."
+    exit 1
+fi
+
+echo "Found eGPU at $EGPU_PCI"
+
+# Unbind from amdgpu
+sudo sh -c "echo \"$EGPU_PCI\" > /sys/bus/pci/drivers/amdgpu/unbind"
+
+# Remove PCIe device
+sudo sh -c "echo 1 > /sys/bus/pci/devices/$EGPU_PCI/remove"
+
+echo "Safe to unplug Thunderbolt cable"
