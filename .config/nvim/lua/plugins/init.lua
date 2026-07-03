@@ -1,8 +1,8 @@
 local ensure_packer = function()
     local fn = vim.fn
-    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
         vim.cmd [[packadd packer.nvim]]
         return true
     end
@@ -23,11 +23,11 @@ require('packer').startup(function(use)
     use 'lewis6991/gitsigns.nvim'
 
     use({
-      "andythigpen/nvim-coverage",
-      requires = "nvim-lua/plenary.nvim",
-      config = function()
-        require("coverage").setup({commands=true,})
-      end,
+        "andythigpen/nvim-coverage",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("coverage").setup({ commands = true, })
+        end,
     })
 
     use {
@@ -35,32 +35,34 @@ require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
-    use { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        requires = { 'neovim-treesitter/treesitter-parser-registry' },
+        run = 'TSUpdate'
+    }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         requires = {
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
             -- LSP Support
-            {'neovim/nvim-lspconfig'},
+            { 'neovim/nvim-lspconfig' },
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'L3MON4D3/LuaSnip'},
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'L3MON4D3/LuaSnip' },
         }
     }
 
     use 'nvimtools/none-ls.nvim'
 
     use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.3',
-       requires = { {'nvim-lua/plenary.nvim'} }
+        'nvim-telescope/telescope.nvim', tag = '0.1.3',
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
-
-    use 'github/copilot.vim'
 
     use 'lewis6991/impatient.nvim'
     if packer_bootstrap then
