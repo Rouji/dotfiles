@@ -1,0 +1,11 @@
+[Unit]
+Description=Persistent tmux server
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/tmux start-server
+ExecStop=/usr/bin/tmux kill-server
+
+[Install]
+WantedBy=default.target

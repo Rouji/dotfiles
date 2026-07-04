@@ -2,14 +2,15 @@
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec ~/bin/sway_session
 fi
-# start tmux
+# reuse a detached session on the systemd-managed tmux server (see
+# ~/.config/systemd/user/tmux.service) if one's idle, else start a fresh one
 tty | grep -qE '/dev/tty[0-9]+'; IS_TTY=$?
 command -v tmux>/dev/null; HAS_TMUX=$?
 if [[ $HAS_TMUX -eq 0 ]] && [[ $IS_TTY -ne 0 ]] && [[ -z $TMUX ]]; then
-    if tmux ls | grep -qv attached; then
+    if tmux ls 2>/dev/null | grep -qv attached; then
         exec tmux attach
     else
-        exec tmux new
+        exec tmux new-session
     fi
 fi
 
@@ -187,3 +188,10 @@ function chpwd() {
 }
 
 autoenv
+
+# NPM global bin (added by Qwen Code installer)
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
