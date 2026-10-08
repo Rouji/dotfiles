@@ -20,4 +20,6 @@ k("n", "<leader>f", vim.lsp.buf.format)
 -- git
 k("n", "<leader>gs", ':Git<CR>')
 k("n", "<leader>gc", ':Git commit<CR>')
-
+k("n", "<leader>gca", ':Git commit --amend<CR>')
+k("n", "<leader>gcan", ':Git commit --amend --no-edit<CR>')
+k("n", "<leader>gp", ':Git push<CR>')
