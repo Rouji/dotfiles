@@ -7,3 +7,6 @@
 [submodule ".zsh/fzf"]
 	path = .zsh/fzf
 	url = https://github.com/unixorn/fzf-zsh-plugin.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
