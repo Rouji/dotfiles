@@ -1,0 +1,13 @@
+[Unit]
+Description=Save Sway tree every 5 minutes
+PartOf=sway-session.target
+After=sway-session.target
+Requisite=sway-session.target
+
+[Timer]
+OnActiveSec=1min
+OnUnitActiveSec=5min
+AccuracySec=30s
+
+[Install]
+WantedBy=sway-session.target

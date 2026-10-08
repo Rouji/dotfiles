@@ -1,0 +1,15 @@
+[Unit]
+Description=Restore Sway tree at sway-session start (swaytreesave)
+Documentation=https://github.com/fabienjuif/swaytreesave
+PartOf=sway-session.target
+After=sway-session.target
+Requisite=sway-session.target
+
+[Service]
+Type=oneshot
+# Only act when there is a snapshot and sway is actually reachable;
+# never fail the session target on a missing/failed restore.
+ExecStart=/bin/sh -c 'rt=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}; sock=$(find "$rt" -maxdepth 1 -name "sway-ipc.*.sock" 2>/dev/null | head -n1); [ -n "$sock" ] || exit 0; [ -f "$HOME/.config/swaytreesave/default.yaml" ] || exit 0; SWAYSOCK="$sock" exec /usr/bin/swaytreesave load'
+
+[Install]
+WantedBy=sway-session.target
