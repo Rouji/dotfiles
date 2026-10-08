@@ -189,8 +189,8 @@ function chpwd() {
 
 autoenv
 
-# NPM global bin (added by Qwen Code installer)
-export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$PATH:$HOME/.npm-global/bin"
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
