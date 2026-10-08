@@ -49,7 +49,7 @@
         "contentPadding": 2,
         "density": "compact",
         "displayMode": "always_visible",
-        "enableExclusionZoneInset": true,
+        "enableExclusionZoneInset": false,
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
@@ -331,14 +331,14 @@
     },
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
-        "allowPasswordWithFprintd": true,
+        "allowPasswordWithFprintd": false,
         "animationDisabled": true,
         "animationSpeed": 1,
-        "autoStartAuth": true,
+        "autoStartAuth": false,
         "avatarImage": "/home/hackl/.face",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
-        "clockStyle": "analog",
+        "clockStyle": "digital",
         "compactLockScreen": true,
         "dimmerOpacity": 0.6,
         "enableBlurBehind": false,
@@ -388,7 +388,7 @@
         "shadowOffsetX": 2,
         "shadowOffsetY": 3,
         "showChangelogOnStartup": true,
-        "showHibernateOnLockScreen": true,
+        "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": true,
         "smoothScrollEnabled": true,
@@ -437,7 +437,7 @@
     "network": {
         "airplaneModeEnabled": false,
         "bluetoothAutoConnect": true,
-        "bluetoothDetailsViewMode": "grid",
+        "bluetoothDetailsViewMode": "list",
         "bluetoothHideUnnamedDevices": true,
         "bluetoothRssiPollIntervalMs": 60000,
         "bluetoothRssiPollingEnabled": false,
@@ -491,8 +491,8 @@
         }
     },
     "osd": {
-        "autoHideMs": 2000,
-        "backgroundOpacity": 1,
+        "autoHideMs": 1000,
+        "backgroundOpacity": 0.85,
         "enabled": true,
         "enabledTypes": [
             0,
@@ -509,10 +509,10 @@
         "notifyUpdates": true
     },
     "sessionMenu": {
-        "countdownDuration": 5000,
+        "countdownDuration": 3000,
         "enableCountdown": true,
         "largeButtonsLayout": "single-row",
-        "largeButtonsStyle": true,
+        "largeButtonsStyle": false,
         "position": "center",
         "powerOptions": [
             {
@@ -559,6 +559,13 @@
             },
             {
                 "action": "rebootToUefi",
+                "command": "",
+                "countdownEnabled": true,
+                "enabled": false,
+                "keybind": ""
+            },
+            {
+                "action": "userspaceReboot",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": false,
