@@ -1,7 +1,16 @@
 #!/bin/sh
 PROFILE="$HOME/.config/firejail/opencode.profile"
+OPENCODE="$HOME/.local/lib/opencode2/opencode"
+
+# OpenCode 2 defaults to a shared background service, which would outlive this
+# sandbox and only see the first project directory. Use a private server instead.
+case "$1" in
+    ""|-*) set -- --standalone "$@" ;;
+    run|mini|models) cmd="$1"; shift; set -- "$cmd" --standalone "$@" ;;
+    *) [ -d "$1" ] && set -- --standalone "$@" ;;
+esac
 
 exec firejail \
     --profile="$PROFILE" \
     --whitelist="$(pwd)" \
-    /usr/bin/opencode "$@"
+    "$OPENCODE" "$@"
