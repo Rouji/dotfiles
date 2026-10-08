@@ -15,19 +15,14 @@ unfocused_hollow = true
 [font]
 size = 10.0
 
-[font.bold]
-family = "xos4 Terminess Powerline"
 
 [font.glyph_offset]
 x = 0
 y = 0
 
-[font.italic]
-family = "xos4 Terminess Powerline"
 
 [font.normal]
-family = "xos4 Terminess Powerline"
-style = "Bold"
+family = "xos4 Terminus"
 
 [font.offset]
 x = 0
