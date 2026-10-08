@@ -203,6 +203,15 @@ input "7504:24926:Corne_Mouse" {
     scroll_factor 0.3
 }
 
+input "7504:24926:ZMK_Project_Corne_Mouse" {
+    natural_scroll enabled
+    scroll_button 275
+    scroll_method on_button_down
+    accel_profile flat
+    pointer_accel 0.8
+    scroll_factor 0.3
+}
+
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway; \
     systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr; \
     systemctl --user start wireplumber
@@ -215,7 +224,6 @@ exec_always {
 }
 
 exec fcitx5
-#exec_always noctalia -d
 
 exec swayidle -w \
     timeout 290 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
