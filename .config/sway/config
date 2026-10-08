@@ -2,7 +2,7 @@ focus_follows_mouse no
 
 set $mod Mod4
 
-set $noctalia qs -c noctalia-shell ipc call
+set $noctalia noctalia msg
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -18,7 +18,7 @@ bindsym $mod+Return exec alacritty msg create-window || alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec $noctalia launcher toggle
+bindsym $mod+d exec $noctalia panel-toggle launcher
 
 # open new browser window
 bindsym $mod+q exec firefox
@@ -108,14 +108,14 @@ bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'log out?' -b 'Yes' 'swaymsg exit'"
 
 # lock screen
-bindsym Control+$mod+l exec $noctalia sessionMenu toggle
+bindsym Control+$mod+l exec $noctalia panel-toggle session
 
 # multimedia keys
-bindsym --locked XF86AudioRaiseVolume exec $noctalia volume increase
-bindsym --locked XF86AudioLowerVolume exec $noctalia volume decrease
-bindsym --locked XF86AudioMute exec $noctalia volume muteOutput
-bindsym --locked XF86MonBrightnessUp exec $noctalia brightness increase
-bindsym --locked XF86MonBrightnessDown exec $noctalia brightness decrease
+bindsym --locked XF86AudioRaiseVolume exec $noctalia volume-up
+bindsym --locked XF86AudioLowerVolume exec $noctalia volume-down
+bindsym --locked XF86AudioMute exec $noctalia volume-mute
+bindsym --locked XF86MonBrightnessUp exec $noctalia brightness-up
+bindsym --locked XF86MonBrightnessDown exec $noctalia brightness-down
 
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
@@ -158,7 +158,7 @@ client.focused_inactive #000000 #000000 #666666 #000000 #000000
 #client.urgent           $col_indicate $col_indicate $col_font #ffffff
 
 # open notification panel
-bindsym $mod+Shift+n exec $noctalia controlCenter toggle
+bindsym $mod+Shift+n exec $noctalia panel-toggle control-center
 
 #disable titlebars
 for_window [class="^.*"] pixel 2
@@ -215,11 +215,11 @@ exec_always {
 }
 
 exec fcitx5
-#exec_always qs -c noctalia-shell --no-duplicate
+#exec_always noctalia -d
 
 exec swayidle -w \
     timeout 290 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    timeout 300 "$noctalia lockScreen lock" \
-    before-sleep "$noctalia lockScreen lock"
+    timeout 300 "$noctalia session lock" \
+    before-sleep "$noctalia session lock"
 
 include config.d/*
