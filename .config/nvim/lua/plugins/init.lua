@@ -37,7 +37,7 @@ require('packer').startup(function(use)
 
     use {
         'nvim-treesitter/nvim-treesitter',
-        requires = { 'neovim-treesitter/treesitter-parser-registry' },
+        branch = 'main',
         run = 'TSUpdate'
     }
 
