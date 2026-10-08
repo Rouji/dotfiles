@@ -25,5 +25,30 @@ export XDG_CURRENT_DESKTOP=sway
 
 export WLR_RENDERER=vulkan
 
+EGPU_VENDOR="0x1002"
+EGPU_DEVICE="0x73df"
+
+for card in /dev/dri/card*; do
+    if [ ! -e "$card" ]; then
+        continue
+    fi
+
+    card_name=$(basename "$card")
+
+    vendor=$(cat "/sys/class/drm/$card_name/device/vendor" 2>/dev/null | tr -d '\n')
+    device=$(cat "/sys/class/drm/$card_name/device/device" 2>/dev/null | tr -d '\n')
+
+    if [ "$vendor" = "$EGPU_VENDOR" ] && [ "$device" = "$EGPU_DEVICE" ]; then
+        echo "egpu is $card"
+        EGPU=$card
+    else
+        IGPU=$card
+    fi
+done
+
+if [ -n "$EGPU" ]; then
+    export WLR_DRM_DEVICES="$EGPU"
+fi
+
 #exec dbus-run-session sway "$@"
 exec systemd-run --user --scope sway "$@"
