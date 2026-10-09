@@ -23,6 +23,8 @@ whitelist ~/.weave
 read-write ~/.weave
 whitelist ~/.cache
 whitelist ~/.config/opencode
+whitelist ~/.weave
+read-write ~/.weave
 read-write ~/.config/opencode
 whitelist ~/.kube
 read-only ~/.kube
@@ -42,3 +44,4 @@ whitelist ~/.local/share/uv/python
 read-only ~/.local/share/uv/python
 whitelist ~/.serena
 read-write ~/.serena
+whitelist ~/juh
